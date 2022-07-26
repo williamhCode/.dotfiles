@@ -1,5 +1,5 @@
 ### My dotfiles yayay!
 
-to add:
+To add:
 - zsh
 - tmux
