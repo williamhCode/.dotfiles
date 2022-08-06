@@ -1,5 +1,5 @@
 require('onedark').setup {
-    transparent = true
+    transparent = true,
 }
 
 require('onedark').load()

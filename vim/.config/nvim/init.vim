@@ -4,7 +4,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'navarasu/onedark.nvim'
 
 " syntax
-Plug 'anntzer/vim-cython'
+" Plug 'anntzer/vim-cython'
 
 " treesitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -17,7 +17,7 @@ Plug 'williamboman/nvim-lsp-installer'
 Plug 'neovim/nvim-lspconfig'
 
 " telescope stuff
-Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope.nvim' , { 'branch': '0.1.x' }
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 " Plug 'nvim-telescope/telescope-frecency.nvim'
@@ -46,13 +46,20 @@ Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'saadparwaiz1/cmp_luasnip'
+Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
 
 " snippets
 Plug 'L3MON4D3/LuaSnip'
 
 call plug#end()
 
+" plugin setup
+lua require('init')
+
 " highlights
+hi NormalFloat guibg=None
+hi FloatBorder guibg=None guifg=#abb2bf
+
 " hi NonText guibg=None
 " hi Normal guibg=None
 " hi LineNr guibg=None
@@ -65,6 +72,3 @@ call plug#end()
 " hi NvimTreeNormal guibg=None
 " hi NvimTreeEndOfBuffer guibg=None
 " hi NvimTreeWinSeparator guifg=#3c3f4b
-
-" require lua
-lua require('init')

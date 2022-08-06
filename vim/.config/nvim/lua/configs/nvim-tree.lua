@@ -2,6 +2,7 @@ require('nvim-tree').setup {
     open_on_setup = true,
     disable_netrw = true,
     hijack_netrw = true,
+    reload_on_bufenter = true,
     update_focused_file = {
         enable = true,
         update_cwd = false,
@@ -23,6 +24,7 @@ require('nvim-tree').setup {
     },
     renderer = {
         root_folder_modifier = ":t",
+        full_name = true,
         icons = {
             glyphs = {
                 git = {

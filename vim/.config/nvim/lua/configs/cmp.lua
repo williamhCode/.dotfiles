@@ -26,26 +26,33 @@ local kind_icons = {
   Struct = "",
   Event = "",
   Operator = "",
-  TypeParameter = "",
+ TypeParameter = "",
 }
 -- find more here: https://www.nerdfonts.com/cheat-sheet
 
+
 cmp.setup({
+    performance = {
+    },
     snippet = {
         expand = function(args)
             require('luasnip').lsp_expand(args.body)
         end,
     },
+    completion = {
+        completeopt = 'menu,menuone'
+    },
     window = {
-        -- completion = cmp.config.window.bordered(),
-        -- documentation = cmp.config.window.bordered(),
+        completion = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered(),
     },
     mapping = cmp.mapping.preset.insert({
         ['<C-u>'] = cmp.mapping.scroll_docs(-1),
         ['<C-d>'] = cmp.mapping.scroll_docs(1),
         ['<C-q>'] = cmp.mapping.complete(),
-        ['<C-e>'] = cmp.mapping.abort(),
+        ['<C-c>'] = cmp.mapping.abort(),
         ['<CR>'] = cmp.mapping.confirm({ select = true }),
+        ['<C-e>'] = cmp.mapping.confirm({ select = true }),
     }),
     formatting = {
         fields = { "kind", "abbr", "menu" },
@@ -64,8 +71,8 @@ cmp.setup({
     sources = cmp.config.sources({
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
-    }, {
         { name = 'buffer' },
+        { name = 'nvim_lsp_signature_help'}
     })
 })
 
@@ -73,7 +80,6 @@ cmp.setup({
 cmp.setup.filetype('gitcommit', {
     sources = cmp.config.sources({
         { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
-    }, {
         { name = 'buffer' },
     })
 })
@@ -90,10 +96,8 @@ cmp.setup.cmdline('/', {
 cmp.setup.cmdline(':', {
     mapping = cmp.mapping.preset.cmdline(),
     sources = cmp.config.sources({
-        { name = 'path' }
-    }, {
+        { name = 'path' },
         { name = 'cmdline' }
     })
 })
-
 

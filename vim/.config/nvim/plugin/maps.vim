@@ -17,22 +17,31 @@ xnoremap C "_C
 nnoremap x "_x
 nnoremap X "_x
 
-nnoremap <leader>x dd
-nnoremap <leader>X D
+nnoremap <leader>d d
+nnoremap <leader>D D
+nnoremap <leader>dd dd
+xnoremap <leader>d d
+xnoremap <leader>D D
 
 xnoremap p "_dP
 
+nnoremap <leader>p "0p
+nnoremap <leader>P "0P
+
+" search for selection
+nnoremap <leader>f *N
+xnoremap <leader>f "ay/<C-r>a/<CR>N
+nnoremap <leader>h <cmd>noh<CR>
 
 " yank to system
-nnoremap <leader>yy "+y
-nnoremap <leader>y "+y
-vnoremap <leader>y "+y
-nmap <leader>Y "+Y
+" nnoremap <leader>yy "+y
+" nnoremap <leader>y "+y
+" vnoremap <leader>y "+y
+" nmap <leader>Y "+Y
 
 
 " stuff
 nnoremap <leader>V 0vg_
-nnoremap <leader>* *N
 nnoremap <A-a> ggVG
 
 
@@ -64,8 +73,7 @@ inoremap <C-l> <right>
 inoremap <C-a> <ESC>I
 inoremap <C-e> <End>
 
-inoremap <A-Bs> <C-w>
-
+inoremap <A-bs> <C-w>
 
 " window manipulation
 noremap <silent> <C-Left> :vertical resize +3<CR>
@@ -80,6 +88,8 @@ map <leader>tk <C-w>t<C-w>K
 " commenting
 nnoremap <silent> <C-_> :Commentary<cr>
 xnoremap <silent> <C-_> :Commentary<cr>
+nnoremap <silent> <C-/> :Commentary<cr>
+xnoremap <silent> <C-/> :Commentary<cr>
 nnoremap <silent> <leader>/ :Commentary<cr>
 xnoremap <silent> <leader>/ :Commentary<cr>
 
@@ -100,7 +110,7 @@ nnoremap <A-]> >>
 xnoremap <leader>[ <gv
 xnoremap <A-[> <gv
 xnoremap <leader>] >gv
-xnoremap <A-[> >gv
+xnoremap <A-]> >gv
 
 
 " remove trailing whitespace
@@ -111,18 +121,6 @@ fun! TrimWhitespace()
 endfun
 
 nnoremap <leader>tw :call TrimWhitespace()<CR>
-
-
-" lsp config
-nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap <silent> gD <cmd>lua vim.lsp.buf.declaration()<CR>
-nnoremap <silent> gr <cmd>lua vim.lsp.buf.references()<CR>
-" nnoremap <silent> gi <cmd>lua vim.lsp.buf.implementation()<CR>
-nnoremap <silent> K <cmd>lua vim.lsp.buf.hover()<CR>
-nnoremap <silent> gs <cmd>lua vim.lsp.buf.signature_help()<CR>
-nnoremap <silent> gf <cmd>lua vim.diagnostic.open_float()<CR>
-" nnoremap <silent> gp <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
-" nnoremap <silent> gn <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
 
 
 " telescope config

@@ -1,6 +1,9 @@
+set nocompatible
+
 set path+=**
 set wildignore+=*/node_modules/*
 set wildmode=longest,full
+set clipboard+=unnamedplus
 
 set mouse=a
 
@@ -8,7 +11,10 @@ set tabstop=4 softtabstop=4
 set shiftwidth=4
 set expandtab
 
-set smartindent
+filetype plugin on
+filetype indent on
+syntax on
+set autoindent
 set exrc
 set relativenumber
 set number
