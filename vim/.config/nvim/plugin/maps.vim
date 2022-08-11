@@ -50,8 +50,8 @@ nnoremap <silent> <leader>e :NvimTreeToggle<CR>
 
 
 " sourcing
-nnoremap <leader><CR> :so $MYVIMRC<CR>
 nnoremap <leader>so :so %<CR>
+command So so %
 
 nnoremap <leader>w :w<CR>
 
@@ -86,12 +86,8 @@ map <leader>tk <C-w>t<C-w>K
 
 
 " commenting
-nnoremap <silent> <C-_> :Commentary<cr>
-xnoremap <silent> <C-_> :Commentary<cr>
-nnoremap <silent> <C-/> :Commentary<cr>
-xnoremap <silent> <C-/> :Commentary<cr>
-nnoremap <silent> <leader>/ :Commentary<cr>
-xnoremap <silent> <leader>/ :Commentary<cr>
+nnoremap <silent> <A-c> :Commentary<cr>
+xnoremap <silent> <A-c> :Commentary<cr>
 
 
 " line moving
@@ -100,17 +96,25 @@ nnoremap <A-k> :m .-2<CR>==
 vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
 
-inoremap <A-[> <C-d>
-inoremap <A-]> <C-t>
 
-nnoremap <leader>[ <<
-nnoremap <A-[> <<
-nnoremap <leader>] >>
-nnoremap <A-]> >>
-xnoremap <leader>[ <gv
-xnoremap <A-[> <gv
-xnoremap <leader>] >gv
-xnoremap <A-]> >gv
+" indentation
+inoremap <A-h> <C-d>
+inoremap <A-l> <C-t>
+nnoremap <A-h> <<
+nnoremap <A-l> >>
+xnoremap <A-h> <gv
+xnoremap <A-l> >gv
+
+
+" swap file
+nnoremap <leader>p <C-^>
+
+
+" scrolling
+map <ScrollWheelUp> <C-Y>
+map <S-ScrollWheelUp> <C-U>
+map <ScrollWheelDown> <C-E>
+map <S-ScrollWheelDown> <C-D>
 
 
 " remove trailing whitespace

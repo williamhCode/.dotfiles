@@ -17,7 +17,6 @@ require('nvim-tree').setup {
         mappings = {
             list = {
                 { key = { "l", "<CR>", "o" }, action = "edit" },
-                { key = { "<CR>", "<C-]>", "<2-RightMouse>" }, action = "cd" },
                 { key = "h", action = "close_node" },
             },
         },

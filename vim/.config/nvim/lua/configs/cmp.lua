@@ -39,9 +39,9 @@ cmp.setup({
             require('luasnip').lsp_expand(args.body)
         end,
     },
-    completion = {
-        completeopt = 'menu,menuone'
-    },
+    -- completion = {
+    --     completeopt = 'menu,menuone'
+    -- },
     window = {
         completion = cmp.config.window.bordered(),
         documentation = cmp.config.window.bordered(),

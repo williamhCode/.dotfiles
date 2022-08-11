@@ -23,6 +23,7 @@ set noerrorbells
 set nowrap
 set incsearch
 set scrolloff=8
+set sidescrolloff=20
 " set colorcolumn=80
 set signcolumn=yes
 set wildmenu
