@@ -53,14 +53,22 @@ nnoremap <silent> <leader>e :NvimTreeToggle<CR>
 nnoremap <leader>so :so %<CR>
 command So so %
 
-nnoremap <leader>w :w<CR>
+function ToggleWrap()
+    if (&wrap == 1)
+        set nowrap
+    else
+        set wrap
+    endif
+endfunction
+
+nnoremap <leader>w :call ToggleWrap()<CR> 
 
 
 " better nagivation
-nnoremap <C-k> <C-w>k
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-l> <C-w>l
+" nnoremap <C-k> <C-w>k
+" nnoremap <C-h> <C-w>h
+" nnoremap <C-j> <C-w>j
+" nnoremap <C-l> <C-w>l
 nnoremap <C-c> <C-w>c
 
 

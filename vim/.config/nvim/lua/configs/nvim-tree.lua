@@ -3,6 +3,7 @@ require('nvim-tree').setup {
     disable_netrw = true,
     hijack_netrw = true,
     reload_on_bufenter = true,
+    create_in_closed_folder = true;
     update_focused_file = {
         enable = true,
         update_cwd = false,
@@ -22,6 +23,7 @@ require('nvim-tree').setup {
         },
     },
     renderer = {
+        group_empty = true,
         root_folder_modifier = ":t",
         full_name = true,
         icons = {
@@ -39,7 +41,7 @@ require('nvim-tree').setup {
         },
     },
     filters = {
-        dotfiles = true,
+        dotfiles = false,
         custom = {
             ".DS_Store",
         },

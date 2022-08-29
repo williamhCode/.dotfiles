@@ -9,6 +9,7 @@ local function config(_config)
             nnoremap("gd", function() vim.lsp.buf.definition() end)
             nnoremap("gD", function() vim.lsp.buf.declaration() end)
             nnoremap("gh", function() vim.lsp.buf.hover() end)
+            nnoremap("gs", function() vim.lsp.buf.signature_help() end)
             nnoremap("gf", function() vim.diagnostic.open_float() end)
             nnoremap("[d", function() vim.diagnostic.goto_next() end)
             nnoremap("]d", function() vim.diagnostic.goto_prev() end)
@@ -36,9 +37,13 @@ require('lspconfig').pyright.setup(config({
     },
 }))
 
-
 require('lspconfig').ccls.setup(config())
 
+require('lspconfig').vimls.setup(config())
+
+local runtime_path = vim.split(package.path, ';')
+table.insert(runtime_path, 'lua/?.lua')
+table.insert(runtime_path, 'lua/?/init.lua')
 
 require('lspconfig').sumneko_lua.setup(config({
     settings = {
@@ -47,7 +52,7 @@ require('lspconfig').sumneko_lua.setup(config({
                 -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
                 version = "LuaJIT",
                 -- Setup your lua path
-                path = vim.split(package.path, ";"),
+                path = runtime_path,
             },
             diagnostics = {
                 -- Get the language server to recognize the `vim` global
@@ -55,13 +60,17 @@ require('lspconfig').sumneko_lua.setup(config({
             },
             workspace = {
                 -- Make the server aware of Neovim runtime files
-                library = {
-                    [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-                    [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
-                },
+                library = vim.api.nvim_get_runtime_file("", true),
+            },
+            -- Do not send telemetry data containing a randomized but unique identifier
+            telemetry = {
+                enable = false,
             },
         },
     },
+}))
+
+require('lspconfig').jdtls.setup(config({
 }))
 
 

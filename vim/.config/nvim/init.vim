@@ -51,6 +51,9 @@ Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
 " snippets
 Plug 'L3MON4D3/LuaSnip'
 
+" tmux nav
+Plug 'christoomey/vim-tmux-navigator'
+
 call plug#end()
 
 " plugin setup
@@ -72,3 +75,7 @@ hi FloatBorder guibg=None guifg=#abb2bf
 " hi NvimTreeNormal guibg=None
 " hi NvimTreeEndOfBuffer guibg=None
 " hi NvimTreeWinSeparator guifg=#3c3f4b
+
+
+" tmux nav settings
+let g:tmux_navigator_save_on_switch = 2
