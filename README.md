@@ -4,4 +4,4 @@ To add:
 - zsh
 - tmux
 
-Managed using [GNU Stow](https://www.gnu.org/software/stow/)
+Managed with [GNU Stow](https://www.gnu.org/software/stow/)
