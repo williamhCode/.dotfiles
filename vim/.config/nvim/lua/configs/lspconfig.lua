@@ -71,6 +71,9 @@ require('lspconfig').sumneko_lua.setup(config({
 }))
 
 require('lspconfig').jdtls.setup(config({
+    root_dir = function(name)
+        return require'lspconfig'.util.root_pattern('pom.xml', 'gradle.build', '.git')(name) or vim.fn.getcwd()
+    end
 }))
 
 

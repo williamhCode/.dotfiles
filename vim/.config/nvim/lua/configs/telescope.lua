@@ -1,11 +1,19 @@
-require('telescope').setup {
+local telescope = require("telescope")
+telescope.setup({
+	pickers = {
+		find_files = {
+            hidden = true
+		},
+	},
+})
+
+telescope.setup {
     defaults = {
         layout_strategy = "flex",
 
         file_ignore_patterns = {
-            ".git/",
+            "^.git/*",
             ".DS_Store",
-            "^/$"
         }
     },
     pickers = {

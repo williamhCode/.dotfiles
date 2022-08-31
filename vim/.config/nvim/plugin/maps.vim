@@ -137,7 +137,7 @@ nnoremap <leader>tw :call TrimWhitespace()<CR>
 
 " telescope config
 nnoremap <A-p> <cmd>Telescope git_files<CR>
-nnoremap <leader>sf <cmd>Telescope find_files hidden=true<CR>
+nnoremap <leader>sf <cmd>Telescope find_files<CR>
 nnoremap <leader>sg <cmd>Telescope live_grep<CR>
 nnoremap <leader>sb <cmd>Telescope buffers<CR>
 nnoremap <leader>sh <cmd>Telescope oldfiles<CR>

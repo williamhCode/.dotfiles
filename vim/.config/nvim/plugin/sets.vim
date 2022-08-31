@@ -31,7 +31,6 @@ set laststatus=3
 set cursorline
 set termguicolors
 
-set undodir=~/.vim/undodir
 set undofile
 
 set t_ti= t_te=
