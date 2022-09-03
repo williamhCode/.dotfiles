@@ -4,9 +4,9 @@ require('nvim-tree').setup {
     hijack_netrw = true,
     reload_on_bufenter = true,
     create_in_closed_folder = true;
+    sync_root_with_cwd = true;
     update_focused_file = {
-        enable = true,
-        update_cwd = false,
+        enable = false,
     },
     git = {
         enable = true,

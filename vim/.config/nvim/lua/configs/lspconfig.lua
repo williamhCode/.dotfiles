@@ -70,12 +70,8 @@ require('lspconfig').sumneko_lua.setup(config({
     },
 }))
 
-require('lspconfig').jdtls.setup(config({
-    root_dir = function(name)
-        return require'lspconfig'.util.root_pattern('pom.xml', 'gradle.build', '.git')(name) or vim.fn.getcwd()
-    end
-}))
-
+require('lspconfig').jdtls.setup(config())
+vim.lsp.set_log_level('debug')
 
 -- UI
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {

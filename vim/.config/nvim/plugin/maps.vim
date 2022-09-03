@@ -14,19 +14,28 @@ nnoremap C "_C
 xnoremap c "_c
 xnoremap C "_C
 
-nnoremap x "_x
-nnoremap X "_x
+nnoremap x d
+nnoremap X D
+nnoremap xx dd
 
-nnoremap <leader>d d
-nnoremap <leader>D D
-nnoremap <leader>dd dd
-xnoremap <leader>d d
-xnoremap <leader>D D
+" nnoremap x "_x
+" nnoremap X "_x
+
+" nnoremap <leader>d d
+" nnoremap <leader>D D
+" nnoremap <leader>dd dd
+" xnoremap <leader>d d
+" xnoremap <leader>D D
 
 xnoremap p "_dP
 
-nnoremap <leader>p "0p
-nnoremap <leader>P "0P
+" nnoremap <leader>p "0p
+" nnoremap <leader>P "0P
+
+if exists("g:neovide")
+    inoremap <D-v> <C-r>+
+    nmap <D-v> p
+endif
 
 " search for selection
 nnoremap <leader>f *N
@@ -47,11 +56,15 @@ nnoremap <A-a> ggVG
 
 " tree
 nnoremap <silent> <leader>e :NvimTreeToggle<CR>
+nnoremap <silent> <leader>tf :NvimTreeFindFile<CR>
+command TF :NvimTreeFindFile
+command TCB :NvimTreeClipboard
+" command TCL :NvimTreeCollapseKeepBuffers
 
 
 " sourcing
 nnoremap <leader>so :so %<CR>
-command So so %
+command SO so %
 
 function ToggleWrap()
     if (&wrap == 1)
@@ -62,14 +75,6 @@ function ToggleWrap()
 endfunction
 
 nnoremap <leader>w :call ToggleWrap()<CR> 
-
-
-" better nagivation
-" nnoremap <C-k> <C-w>k
-" nnoremap <C-h> <C-w>h
-" nnoremap <C-j> <C-w>j
-" nnoremap <C-l> <C-w>l
-nnoremap <C-c> <C-w>c
 
 
 " insert mode functionality
@@ -83,36 +88,54 @@ inoremap <C-e> <End>
 
 inoremap <A-bs> <C-w>
 
-" window manipulation
+" window
 noremap <silent> <C-Left> :vertical resize +3<CR>
 noremap <silent> <C-Right> :vertical resize -3<CR>
 noremap <silent> <C-Up> :resize +3<CR>
 noremap <silent> <C-Down> :resize -3<CR>
+
+nnoremap <silent> <C-c> <C-w>c
 
 map <leader>th <C-w>t<C-w>H
 map <leader>tk <C-w>t<C-w>K
 
 
 " commenting
-nnoremap <silent> <A-c> :Commentary<cr>
-xnoremap <silent> <A-c> :Commentary<cr>
+if exists("g:neovide")
+    nnoremap <silent> <D-/> :Commentary<cr>
+    xnoremap <silent> <D-/> :Commentary<cr>
+else
+    nnoremap <silent> <A-c> :Commentary<cr>
+    xnoremap <silent> <A-c> :Commentary<cr>
+endif
 
 
 " line moving
-nnoremap <A-j> :m .+1<CR>==
-nnoremap <A-k> :m .-2<CR>==
-vnoremap <A-j> :m '>+1<CR>gv=gv
-vnoremap <A-k> :m '<-2<CR>gv=gv
-
+nnoremap <silent> <A-k> :m .-2<CR>==
+nnoremap <silent> <A-j> :m .+1<CR>==
+vnoremap <silent> <A-k> :m '<-2<CR>gv=gv
+vnoremap <silent> <A-j> :m '>+1<CR>gv=gv
 
 " indentation
-inoremap <A-h> <C-d>
-inoremap <A-l> <C-t>
-nnoremap <A-h> <<
-nnoremap <A-l> >>
-xnoremap <A-h> <gv
-xnoremap <A-l> >gv
+if exists("g:neovide")
+    inoremap <D-[> <C-d>
+    inoremap <D-]> <C-t>
 
+    inoremap <D-[> <C-d>
+    nnoremap <D-[> <<
+    nnoremap <D-]> >>
+    xnoremap <D-[> <gv
+    xnoremap <D-]> >gv
+else
+    inoremap <A-h> <C-d>
+    inoremap <A-l> <C-t>
+
+    inoremap <A-h> <C-d>
+    nnoremap <A-h> <<
+    nnoremap <A-l> >>
+    xnoremap <A-h> <gv
+    xnoremap <A-l> >gv
+endif
 
 " swap file
 nnoremap <leader>p <C-^>
@@ -142,3 +165,11 @@ nnoremap <leader>sg <cmd>Telescope live_grep<CR>
 nnoremap <leader>sb <cmd>Telescope buffers<CR>
 nnoremap <leader>sh <cmd>Telescope oldfiles<CR>
  
+
+" terminal config
+tnoremap <Esc> <C-\><C-n>
+
+
+" centered jumping
+nnoremap <C-u> <C-u>zz
+nnoremap <C-d> <C-d>zz

@@ -30,6 +30,7 @@ set splitbelow splitright
 set laststatus=3
 set cursorline
 set termguicolors
+set colorcolumn=120
 
 set undofile
 

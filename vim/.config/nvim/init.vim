@@ -38,7 +38,7 @@ Plug 'kyazdani42/nvim-tree.lua'
 " status line
 Plug 'nvim-lualine/lualine.nvim'
 
-" autocomplete
+" lsp/autocomplete
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
@@ -50,6 +50,7 @@ Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
 
 " snippets
 Plug 'L3MON4D3/LuaSnip'
+Plug 'rafamadriz/friendly-snippets'
 
 " tmux nav
 Plug 'christoomey/vim-tmux-navigator'
