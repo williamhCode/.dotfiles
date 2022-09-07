@@ -2,8 +2,6 @@ let mapleader=" "
 nnoremap <SPACE> <Nop>
 
 " better deleting and cutting
-nnoremap s "_s
-
 nnoremap d "_d
 nnoremap D "_D
 xnoremap d "_d
@@ -17,15 +15,6 @@ xnoremap C "_C
 nnoremap x d
 nnoremap X D
 nnoremap xx dd
-
-" nnoremap x "_x
-" nnoremap X "_x
-
-" nnoremap <leader>d d
-" nnoremap <leader>D D
-" nnoremap <leader>dd dd
-" xnoremap <leader>d d
-" xnoremap <leader>D D
 
 xnoremap p "_dP
 
@@ -159,8 +148,18 @@ nnoremap <leader>tw :call TrimWhitespace()<CR>
 
 
 " telescope config
-nnoremap <A-p> <cmd>Telescope git_files<CR>
-nnoremap <leader>sf <cmd>Telescope find_files<CR>
+" nnoremap <A-p> <cmd>Telescope git_files<CR>
+lua << EOF
+function _G.better_find_files(opts)
+    opts = opts or {}
+    -- we only want to do it if we have a gitignore and no .git dir
+    if vim.fn.filereadable(".gitignore") == 1 and vim.fn.isdirectory(".git/") == 0 then
+        opts.find_command = { "rg", "--files", "--ignore-file", ".gitignore" }
+    end
+    require("telescope.builtin").find_files(opts)
+end
+EOF
+nnoremap <leader>sf <cmd>lua better_find_files()<CR>
 nnoremap <leader>sg <cmd>Telescope live_grep<CR>
 nnoremap <leader>sb <cmd>Telescope buffers<CR>
 nnoremap <leader>sh <cmd>Telescope oldfiles<CR>
@@ -169,7 +168,14 @@ nnoremap <leader>sh <cmd>Telescope oldfiles<CR>
 " terminal config
 tnoremap <Esc> <C-\><C-n>
 
+:echo "Hello, world!"
 
 " centered jumping
 nnoremap <C-u> <C-u>zz
 nnoremap <C-d> <C-d>zz
+
+" better word moving
+" nnoremap <silent> <leader>w :call search('\<\w', 'W')<cr>
+" nnoremap <silent> <leader>e :call search('\w\>', 'W')<cr>
+" nnoremap <silent> <leader>b :call search('\<\w', 'bW')<cr>
+" nnoremap <silent> <leader>gE :call search('\w\>', 'bW')<cr>

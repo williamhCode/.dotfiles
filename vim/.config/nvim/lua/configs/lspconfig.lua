@@ -1,10 +1,12 @@
 local Remap = require("keymap")
 local nnoremap = Remap.nnoremap
 
+local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+capabilities.textDocument.completion.completionItem.snippetSupport = false
 
 local function config(_config)
     return vim.tbl_deep_extend("force", {
-        capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+        capabilities = capabilities,
         on_attach = function()
             nnoremap("gd", function() vim.lsp.buf.definition() end)
             nnoremap("gD", function() vim.lsp.buf.declaration() end)
@@ -13,9 +15,9 @@ local function config(_config)
             nnoremap("gf", function() vim.diagnostic.open_float() end)
             nnoremap("[d", function() vim.diagnostic.goto_next() end)
             nnoremap("]d", function() vim.diagnostic.goto_prev() end)
-            nnoremap("<leader>vca", function() vim.lsp.buf.code_action() end)
-            nnoremap("<leader>vrr", function() vim.lsp.buf.references() end)
-            nnoremap("<leader>vrn", function() vim.lsp.buf.rename() end)
+            nnoremap("gca", function() vim.lsp.buf.code_action() end)
+            nnoremap("gr", function() vim.lsp.buf.references() end)
+            nnoremap("grn", function() vim.lsp.buf.rename() end)
         end,
     }, _config or {})
 end
@@ -70,8 +72,8 @@ require('lspconfig').sumneko_lua.setup(config({
     },
 }))
 
-require('lspconfig').jdtls.setup(config())
-vim.lsp.set_log_level('debug')
+require('lspconfig').jdtls.setup(config({
+}))
 
 -- UI
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {

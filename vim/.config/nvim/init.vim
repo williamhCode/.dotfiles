@@ -3,9 +3,6 @@ call plug#begin('~/.vim/plugged')
 " themes
 Plug 'navarasu/onedark.nvim'
 
-" syntax
-" Plug 'anntzer/vim-cython'
-
 " treesitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
@@ -30,7 +27,8 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'windwp/nvim-autopairs'
 
 " better indenting
-Plug 'Vimjas/vim-python-pep8-indent'
+" Plug 'Vimjas/vim-python-pep8-indent'
+Plug 'yioneko/nvim-yati'
 
 " file tree
 Plug 'kyazdani42/nvim-tree.lua'
@@ -54,6 +52,9 @@ Plug 'rafamadriz/friendly-snippets'
 
 " tmux nav
 Plug 'christoomey/vim-tmux-navigator'
+
+" vim sneak
+Plug 'justinmk/vim-sneak'
 
 call plug#end()
 
@@ -80,3 +81,6 @@ hi FloatBorder guibg=None guifg=#abb2bf
 
 " tmux nav settings
 let g:tmux_navigator_save_on_switch = 2
+
+
+let g:sneak#use_ic_scs = 1

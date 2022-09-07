@@ -1,22 +1,20 @@
-local telescope = require("telescope")
-telescope.setup({
-	pickers = {
-		find_files = {
-            hidden = true
-		},
-	},
-})
-
-telescope.setup {
+require("telescope").setup {
     defaults = {
         layout_strategy = "flex",
-
         file_ignore_patterns = {
             "^.git/*",
             ".DS_Store",
-        }
+        },
+        mappings = {
+            i = {
+                ["<esc>"] = require('telescope.actions').close,
+            },
+        },
     },
     pickers = {
+        find_files = {
+            hidden = true
+        },
         buffers = {
             sort_lastused = true,
         },
@@ -44,3 +42,7 @@ telescope.setup {
 
 require('telescope').load_extension('fzf')
 -- require('telescope').load_extension('frecency')
+
+
+-- better find files
+

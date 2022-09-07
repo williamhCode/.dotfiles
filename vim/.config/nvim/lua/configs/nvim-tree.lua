@@ -48,6 +48,14 @@ require('nvim-tree').setup {
         exclude = {
             ".gitignore"
         }
-    }
+    },
+    log = {
+        enable = true,
+        truncate = true,
+        types = {
+            git = true,
+            profile = true,
+        },
+    },
 }
 

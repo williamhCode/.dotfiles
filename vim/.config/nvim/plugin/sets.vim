@@ -10,11 +10,11 @@ set mouse=a
 set tabstop=4 softtabstop=4
 set shiftwidth=4
 set expandtab
+set autoindent
 
 filetype plugin on
 filetype indent on
 syntax on
-set autoindent
 set exrc
 set relativenumber
 set number
@@ -31,6 +31,8 @@ set laststatus=3
 set cursorline
 set termguicolors
 set colorcolumn=120
+set ignorecase
+set smartcase
 
 set undofile
 
@@ -39,3 +41,5 @@ set t_ti= t_te=
 set pumheight=12
 
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
+" autocmd BufRead,BufNewFile *.pxd,*.pxi,*.pyx set filetype=cython
