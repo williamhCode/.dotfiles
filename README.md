@@ -1,7 +1,7 @@
 ### My dotfiles yayay!
 
 To add:
-- zsh
-- tmux
+- [x] zsh
+- [x] tmux
 
 Managed with [GNU Stow](https://www.gnu.org/software/stow/)
