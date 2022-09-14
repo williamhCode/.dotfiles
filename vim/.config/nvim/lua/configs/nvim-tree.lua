@@ -2,6 +2,7 @@ require('nvim-tree').setup {
     open_on_setup = true,
     disable_netrw = true,
     hijack_netrw = true,
+    hijack_cursor = false,
     reload_on_bufenter = true,
     create_in_closed_folder = true;
     sync_root_with_cwd = true;
@@ -19,6 +20,8 @@ require('nvim-tree').setup {
             list = {
                 { key = { "l", "<CR>", "o" }, action = "edit" },
                 { key = "h", action = "close_node" },
+                { key = "J", action = "next_sibling" },
+                { key = "K", action = "prev_sibling" },
             },
         },
     },

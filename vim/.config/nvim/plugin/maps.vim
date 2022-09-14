@@ -179,3 +179,4 @@ nnoremap <C-d> <C-d>zz
 " nnoremap <silent> <leader>e :call search('\w\>', 'W')<cr>
 " nnoremap <silent> <leader>b :call search('\<\w', 'bW')<cr>
 " nnoremap <silent> <leader>gE :call search('\w\>', 'bW')<cr>
+

@@ -24,11 +24,11 @@ end
 
 
 -- lsp setups
-require('lspconfig').pyright.setup(config({
+require("lspconfig").pyright.setup(config({
     settings = {
         python = {
             analysis = {
-                typeCheckingMode = 'basic',
+                typeCheckingMode = "off",
                 autoImportCompletions = false,
 
                 autoSearchPaths = true,
@@ -39,19 +39,19 @@ require('lspconfig').pyright.setup(config({
     },
 }))
 
-require('lspconfig').ccls.setup(config())
+require("lspconfig").ccls.setup(config())
 
-require('lspconfig').vimls.setup(config())
+require("lspconfig").vimls.setup(config())
 
-local runtime_path = vim.split(package.path, ';')
-table.insert(runtime_path, 'lua/?.lua')
-table.insert(runtime_path, 'lua/?/init.lua')
+local runtime_path = vim.split(package.path, ";")
+table.insert(runtime_path, "lua/?.lua")
+table.insert(runtime_path, "lua/?/init.lua")
 
-require('lspconfig').sumneko_lua.setup(config({
+require("lspconfig").sumneko_lua.setup(config({
     settings = {
         Lua = {
             runtime = {
-                -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+                -- Tell the language server which version of Lua you"re using (most likely LuaJIT in the case of Neovim)
                 version = "LuaJIT",
                 -- Setup your lua path
                 path = runtime_path,
@@ -72,7 +72,15 @@ require('lspconfig').sumneko_lua.setup(config({
     },
 }))
 
-require('lspconfig').jdtls.setup(config({
+require("lspconfig").jdtls.setup(config({
+    settings = {
+        java = {
+            signatureHelp = {
+                enabled = true,
+                description = { enabled = false }
+            },
+        }
+    }
 }))
 
 -- UI

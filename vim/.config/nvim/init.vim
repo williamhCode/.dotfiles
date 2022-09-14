@@ -29,6 +29,7 @@ Plug 'windwp/nvim-autopairs'
 " better indenting
 " Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'yioneko/nvim-yati'
+" Plug 'williamhCode/nvim-yati'
 
 " file tree
 Plug 'kyazdani42/nvim-tree.lua'
