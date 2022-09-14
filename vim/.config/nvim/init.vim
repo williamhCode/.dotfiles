@@ -83,5 +83,4 @@ hi FloatBorder guibg=None guifg=#abb2bf
 " tmux nav settings
 let g:tmux_navigator_save_on_switch = 2
 
-
 let g:sneak#use_ic_scs = 1

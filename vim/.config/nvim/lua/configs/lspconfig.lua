@@ -24,24 +24,23 @@ end
 
 
 -- lsp setups
-require("lspconfig").pyright.setup(config({
-    settings = {
-        python = {
-            analysis = {
-                typeCheckingMode = "off",
-                autoImportCompletions = false,
 
-                autoSearchPaths = true,
-                useLibraryCodeForTypes = true,
-                diagnosticMode = "workspace",
-            }
-        }
-    },
-}))
+-- require('lspconfig').pyright.setup(config({
+--     settings = {
+--         python = {
+--             analysis = {
+--                 typeCheckingMode = 'basic',
+--                 autoImportCompletions = false,
+-- 
+--                 autoSearchPaths = true,
+--                 useLibraryCodeForTypes = true,
+--                 diagnosticMode = "workspace",
+--             }
+--         }
+--     },
+-- }))
 
-require("lspconfig").ccls.setup(config())
-
-require("lspconfig").vimls.setup(config())
+-- require('lspconfig').ccls.setup(config())
 
 local runtime_path = vim.split(package.path, ";")
 table.insert(runtime_path, "lua/?.lua")
