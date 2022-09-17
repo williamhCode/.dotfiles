@@ -1,4 +1,11 @@
 call plug#begin('~/.vim/plugged')
+" The default plugin directory will be as follows:
+"   - Vim (Linux/macOS): '~/.vim/plugged'
+"   - Vim (Windows): '~/vimfiles/plugged'
+"   - Neovim (Linux/macOS/Windows): stdpath('data') . '/plugged'
+" You can specify a custom plugin directory by passing it as the argument
+"   - e.g. `call plug#begin('~/.vim/plugged')`
+"   - Avoid using standard Vim directory names like 'plugin'
 
 " themes
 Plug 'navarasu/onedark.nvim'
@@ -27,7 +34,7 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'windwp/nvim-autopairs'
 
 " better indenting
-" Plug 'Vimjas/vim-python-pep8-indent'
+Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'yioneko/nvim-yati'
 " Plug 'williamhCode/nvim-yati'
 
@@ -45,7 +52,8 @@ Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'saadparwaiz1/cmp_luasnip'
-Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
+" Plug 'hrsh7th/cmp-nvim-lsp-ray-x/lsp_signature.nvimsignature-help'
+Plug 'ray-x/lsp_signature.nvim'
 
 " snippets
 Plug 'L3MON4D3/LuaSnip'

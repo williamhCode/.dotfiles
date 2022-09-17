@@ -148,7 +148,6 @@ nnoremap <leader>tw :call TrimWhitespace()<CR>
 
 
 " telescope config
-" nnoremap <A-p> <cmd>Telescope git_files<CR>
 lua << EOF
 function _G.better_find_files(opts)
     opts = opts or {}
@@ -156,9 +155,11 @@ function _G.better_find_files(opts)
     if vim.fn.filereadable(".gitignore") == 1 and vim.fn.isdirectory(".git/") == 0 then
         opts.find_command = { "rg", "--files", "--ignore-file", ".gitignore" }
     end
+    opts.find_command = { "rg", "--files", "--hidden"}
     require("telescope.builtin").find_files(opts)
 end
 EOF
+
 nnoremap <leader>sf <cmd>lua better_find_files()<CR>
 nnoremap <leader>sg <cmd>Telescope live_grep<CR>
 nnoremap <leader>sb <cmd>Telescope buffers<CR>
@@ -171,8 +172,23 @@ tnoremap <Esc> <C-\><C-n>
 :echo "Hello, world!"
 
 " centered jumping
-nnoremap <C-u> <C-u>zz
-nnoremap <C-d> <C-d>zz
+function! ScrollUp()
+    set scrolloff=0
+    execute 'normal! ' . "\<C-u>"
+    set scrolloff=8
+endfunction
+
+function! ScrollDown()
+    set scrolloff=0
+    execute 'normal! ' . "\<C-d>"
+    set scrolloff=8
+endfunction
+
+nnoremap <silent> <C-u> :call ScrollUp()<CR>zz
+nnoremap <silent> <C-d> :call ScrollDown()<CR>zz
+
+" nnoremap <C-u> :call ScrollUp()<CR>zz
+" nnoremap <C-d> :call ScrollDown()<CR>zz
 
 " better word moving
 " nnoremap <silent> <leader>w :call search('\<\w', 'W')<cr>

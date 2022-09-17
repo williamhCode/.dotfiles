@@ -2,7 +2,7 @@ require("telescope").setup {
     defaults = {
         layout_strategy = "flex",
         file_ignore_patterns = {
-            "^.git/*",
+            "^%.git/",
             ".DS_Store",
         },
         mappings = {
@@ -12,9 +12,6 @@ require("telescope").setup {
         },
     },
     pickers = {
-        find_files = {
-            hidden = true
-        },
         buffers = {
             sort_lastused = true,
         },

@@ -52,7 +52,6 @@ cmp.setup({
         ['<C-d>'] = cmp.mapping.scroll_docs(1),
         ['<C-q>'] = cmp.mapping.complete(),
         ['<C-c>'] = cmp.mapping.close(),
-        ['<CR>'] = cmp.mapping.confirm({ select = true }),
         ['<C-e>'] = cmp.mapping.confirm({ select = true }),
 
         -- super tabbing
@@ -94,7 +93,7 @@ cmp.setup({
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
         { name = 'buffer' },
-        { name = 'nvim_lsp_signature_help'}
+        -- { name = 'nvim_lsp_signature_help'}
     })
 })
 

@@ -18,10 +18,10 @@ local function config(_config)
             nnoremap("gca", function() vim.lsp.buf.code_action() end)
             nnoremap("gr", function() vim.lsp.buf.references() end)
             nnoremap("grn", function() vim.lsp.buf.rename() end)
+            nnoremap("<A-f>", function() vim.lsp.buf.format({ async = true }) end)
         end,
     }, _config or {})
 end
-
 
 -- lsp setups
 require("lspconfig").pyright.setup(config({
@@ -82,6 +82,7 @@ require("lspconfig").jdtls.setup(config({
         }
     }
 }))
+
 
 -- UI
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
