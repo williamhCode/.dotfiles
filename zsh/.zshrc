@@ -135,8 +135,17 @@ unset __conda_setup
 
 # <<< conda initialize <<<
 
-export PATH="$PATH:/Applications/MATLAB_R2021a.app/bin"
-export PATH="$PATH:/Users/williamhou/.dotnet/tools"
+unsetopt autocd
+
+# prevent duplicate path in tmux
+if [ -z $TMUX ]; then
+    export PATH="$PATH:/Applications/MATLAB_R2021a.app/bin"
+    export PATH="$PATH:/Users/williamhou/.dotnet/tools"
+    export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+fi
+
+export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
 
 export VRC="$HOME/.config/nvim"
 export ZRC="$HOME/.zshrc"
@@ -153,14 +162,11 @@ export TERM="xterm-256color"
 export VISUAL=nvim
 export EDITOR="$VISUAL"
 
-export PU_SSH=hou169@data.cs.purdue.edu
+export PU_SSH="hou169@data.cs.purdue.edu"
+local PU_SSH_PASSWORD=$(security find-generic-password -a "$USER" -s "pu_ssh_password" -w)
+alias ssh_pu="~/.local/scripts/exp.sh $PU_SSH_PASSWORD ssh hou169@data.cs.purdue.edu"
+alias sftp_pu="~/.local/scripts/exp.sh $PU_SSH_PASSWORD sftp hou169@data.cs.purdue.edu"
 
-# tmux sessionizer
-# function run_tmux_sessionizer() {
-#     ~/.local/scripts/tmux-sessionizer.sh
-# }
-# zle -N run_tmux_sessionizer
-# bindkey ^f run_tmux_sessionizer
 bindkey -s ^f "~/.local/scripts/tmux-sessionizer.sh\n"
 
 # local zshrc sourcing
@@ -178,5 +184,9 @@ add-zsh-hook chpwd load-local-conf
 # fzf keybinds
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-neofetch
+if [ -z $TMUX ]; then
+    neofetch
+elif [ $(tmux display-message -p '#{window_panes}') -le 1 ]; then
+    neofetch
+fi
 
