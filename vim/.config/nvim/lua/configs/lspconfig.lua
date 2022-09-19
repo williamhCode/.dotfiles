@@ -16,7 +16,7 @@ local function config(_config)
             nnoremap("[d", function() vim.diagnostic.goto_next() end)
             nnoremap("]d", function() vim.diagnostic.goto_prev() end)
             nnoremap("gca", function() vim.lsp.buf.code_action() end)
-            nnoremap("gr", function() vim.lsp.buf.references() end)
+            nnoremap("grr", function() vim.lsp.buf.references() end)
             nnoremap("grn", function() vim.lsp.buf.rename() end)
             nnoremap("<A-f>", function() vim.lsp.buf.format({ async = true }) end)
         end,
@@ -46,6 +46,10 @@ require("lspconfig").vimls.setup(config())
 local runtime_path = vim.split(package.path, ";")
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
+
+require("lua-dev").setup({
+  -- add any options here, or leave empty to use the default settings
+})
 
 require("lspconfig").sumneko_lua.setup(config({
     settings = {
@@ -82,7 +86,6 @@ require("lspconfig").jdtls.setup(config({
         }
     }
 }))
-
 
 -- UI
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {

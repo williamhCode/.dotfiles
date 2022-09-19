@@ -29,7 +29,6 @@ endif
 " search for selection
 nnoremap <leader>f *N
 xnoremap <leader>f "ay/<C-r>a/<CR>N
-nnoremap <leader>h <cmd>noh<CR>
 
 " yank to system
 " nnoremap <leader>yy "+y
@@ -45,7 +44,7 @@ nnoremap <A-a> ggVG
 
 " tree
 nnoremap <silent> <leader>e :NvimTreeToggle<CR>
-nnoremap <silent> <leader>tf :NvimTreeFindFile<CR>
+" nnoremap <silent> <leader>tf :NvimTreeFindFile<CR>
 command TF :NvimTreeFindFile
 command TCB :NvimTreeClipboard
 " command TCL :NvimTreeCollapseKeepBuffers
@@ -63,7 +62,7 @@ function ToggleWrap()
     endif
 endfunction
 
-nnoremap <leader>w :call ToggleWrap()<CR> 
+nnoremap <leader>w :call ToggleWrap()<CR>
 
 
 " insert mode functionality
@@ -85,8 +84,8 @@ noremap <silent> <C-Down> :resize -3<CR>
 
 nnoremap <silent> <C-c> <C-w>c
 
-map <leader>th <C-w>t<C-w>H
-map <leader>tk <C-w>t<C-w>K
+" map <leader>th <C-w>t<C-w>H
+" map <leader>tk <C-w>t<C-w>K
 
 
 " commenting
@@ -144,7 +143,8 @@ fun! TrimWhitespace()
     call winrestview(l:save)
 endfun
 
-nnoremap <leader>tw :call TrimWhitespace()<CR>
+" nnoremap <leader>tw :call TrimWhitespace()<CR>
+command TW :call TrimWhitespace()
 
 
 " telescope config
@@ -164,7 +164,7 @@ nnoremap <leader>sf <cmd>lua better_find_files()<CR>
 nnoremap <leader>sg <cmd>Telescope live_grep<CR>
 nnoremap <leader>sb <cmd>Telescope buffers<CR>
 nnoremap <leader>sh <cmd>Telescope oldfiles<CR>
- 
+
 
 " terminal config
 tnoremap <Esc> <C-\><C-n>
@@ -187,12 +187,21 @@ endfunction
 nnoremap <silent> <C-u> :call ScrollUp()<CR>zz
 nnoremap <silent> <C-d> :call ScrollDown()<CR>zz
 
-" nnoremap <C-u> :call ScrollUp()<CR>zz
-" nnoremap <C-d> :call ScrollDown()<CR>zz
+lua << EOF
+local nnoremap = require("keymap").nnoremap
 
-" better word moving
-" nnoremap <silent> <leader>w :call search('\<\w', 'W')<cr>
-" nnoremap <silent> <leader>e :call search('\w\>', 'W')<cr>
-" nnoremap <silent> <leader>b :call search('\<\w', 'bW')<cr>
-" nnoremap <silent> <leader>gE :call search('\w\>', 'bW')<cr>
+local silent = { silent = true }
 
+-- Terminal commands
+-- ueoa is first through fourth finger left hand home row.
+-- This just means I can crush, with opposite hand, the 4 terminal positions
+--
+-- These functions are stored in harpoon.  A plugn that I am developing
+nnoremap("<leader>a", function() require("harpoon.mark").add_file() end, silent)
+nnoremap("<C-e>", function() require("harpoon.ui").toggle_quick_menu() end, silent)
+
+nnoremap("<leader>h", function() require("harpoon.ui").nav_file(1) end, silent)
+nnoremap("<leader>j", function() require("harpoon.ui").nav_file(2) end, silent)
+nnoremap("<leader>k", function() require("harpoon.ui").nav_file(3) end, silent)
+nnoremap("<leader>l", function() require("harpoon.ui").nav_file(4) end, silent)
+EOF

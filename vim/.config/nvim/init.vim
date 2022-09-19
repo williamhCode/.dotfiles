@@ -52,8 +52,9 @@ Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'saadparwaiz1/cmp_luasnip'
-" Plug 'hrsh7th/cmp-nvim-lsp-ray-x/lsp_signature.nvimsignature-help'
+Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
 Plug 'ray-x/lsp_signature.nvim'
+Plug 'folke/lua-dev.nvim'
 
 " snippets
 Plug 'L3MON4D3/LuaSnip'
@@ -64,6 +65,9 @@ Plug 'christoomey/vim-tmux-navigator'
 
 " vim sneak
 Plug 'justinmk/vim-sneak'
+
+" harpoon
+Plug 'ThePrimeagen/harpoon'
 
 call plug#end()
 
@@ -90,6 +94,5 @@ hi FloatBorder guibg=None guifg=#abb2bf
 
 " tmux nav settings
 let g:tmux_navigator_save_on_switch = 2
-
 
 let g:sneak#use_ic_scs = 1
