@@ -48,10 +48,10 @@ cmp.setup({
         documentation = cmp.config.window.bordered(),
     },
     mapping = cmp.mapping.preset.insert({
-        ['<C-u>'] = cmp.mapping.scroll_docs(-1),
-        ['<C-d>'] = cmp.mapping.scroll_docs(1),
-        ['<C-q>'] = cmp.mapping.complete(),
-        ['<C-c>'] = cmp.mapping.close(),
+        ['<C-u>'] = cmp.mapping.scroll_docs(-4),
+        ['<C-d>'] = cmp.mapping.scroll_docs(4),
+        -- ['<C-q>'] = cmp.mapping.complete(),
+        ['<C-c>'] = cmp.mapping.abort(),
         ['<C-e>'] = cmp.mapping.confirm({ select = true }),
 
         -- super tabbing
