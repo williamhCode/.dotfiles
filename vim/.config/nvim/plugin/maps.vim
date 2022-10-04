@@ -38,7 +38,7 @@ xnoremap <leader>f "ay/<C-r>a/<CR>N
 
 
 " stuff
-nnoremap <leader>V 0vg_
+nnoremap <leader>V ^vg_
 nnoremap <A-a> ggVG
 
 
@@ -52,7 +52,6 @@ command TCB :NvimTreeClipboard
 
 " sourcing
 nnoremap <leader>so :so %<CR>
-command SO so %
 
 function ToggleWrap()
     if (&wrap == 1)
@@ -70,9 +69,6 @@ inoremap <C-h> <left>
 inoremap <C-j> <down>
 inoremap <C-k> <up>
 inoremap <C-l> <right>
-
-inoremap <C-a> <ESC>I
-inoremap <C-e> <End>
 
 inoremap <A-bs> <C-w>
 
@@ -108,8 +104,6 @@ vnoremap <silent> <A-j> :m '>+1<CR>gv=gv
 if exists("g:neovide")
     inoremap <D-[> <C-d>
     inoremap <D-]> <C-t>
-
-    inoremap <D-[> <C-d>
     nnoremap <D-[> <<
     nnoremap <D-]> >>
     xnoremap <D-[> <gv
@@ -117,23 +111,17 @@ if exists("g:neovide")
 else
     inoremap <A-h> <C-d>
     inoremap <A-l> <C-t>
-
-    inoremap <A-h> <C-d>
     nnoremap <A-h> <<
     nnoremap <A-l> >>
     xnoremap <A-h> <gv
     xnoremap <A-l> >gv
 endif
 
-" swap file
-nnoremap <leader>p <C-^>
-
-
 " scrolling
-map <ScrollWheelUp> <C-Y>
-map <S-ScrollWheelUp> <C-U>
-map <ScrollWheelDown> <C-E>
-map <S-ScrollWheelDown> <C-D>
+noremap <ScrollWheelUp> <C-y>
+noremap <S-ScrollWheelUp> <C-u>
+noremap <ScrollWheelDown> <C-e>
+noremap <S-ScrollWheelDown> <C-d>
 
 
 " remove trailing whitespace
@@ -165,7 +153,6 @@ nnoremap <leader>sg <cmd>Telescope live_grep<CR>
 nnoremap <leader>sb <cmd>Telescope buffers<CR>
 nnoremap <leader>sh <cmd>Telescope oldfiles<CR>
 
-
 " terminal config
 tnoremap <Esc> <C-\><C-n>
 
@@ -192,13 +179,8 @@ local nnoremap = require("keymap").nnoremap
 
 local silent = { silent = true }
 
--- Terminal commands
--- ueoa is first through fourth finger left hand home row.
--- This just means I can crush, with opposite hand, the 4 terminal positions
---
--- These functions are stored in harpoon.  A plugn that I am developing
 nnoremap("<leader>a", function() require("harpoon.mark").add_file() end, silent)
-nnoremap("<C-e>", function() require("harpoon.ui").toggle_quick_menu() end, silent)
+nnoremap("<leader>m", function() require("harpoon.ui").toggle_quick_menu() end, silent)
 
 nnoremap("<leader>h", function() require("harpoon.ui").nav_file(1) end, silent)
 nnoremap("<leader>j", function() require("harpoon.ui").nav_file(2) end, silent)
