@@ -156,6 +156,7 @@ alias vim="nvim"
 alias ibrew="arch -x86_64 /usr/local/bin/brew"
 # alias dotnet="/usr/local/share/dotnet/dotnet"
 # alias idotnet="/usr/local/share/dotnet/x64/dotnet"
+alias java_gradle_init="~/.local/scripts/java_gradle_init.sh"
 
 export TERM="xterm-256color"
 
