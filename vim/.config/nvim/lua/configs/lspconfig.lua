@@ -12,12 +12,12 @@ local function config(_config)
             nnoremap("gD", function() vim.lsp.buf.declaration() end)
             nnoremap("gh", function() vim.lsp.buf.hover() end)
             nnoremap("gs", function() vim.lsp.buf.signature_help() end)
-            nnoremap("<leader>vf", function() vim.diagnostic.open_float() end)
+            nnoremap("gr", function() vim.lsp.buf.references() end)
+            nnoremap("<leader>df", function() vim.diagnostic.open_float() end)
+            nnoremap("<leader>dca", function() vim.lsp.buf.code_action() end)
+            nnoremap("<leader>drn", function() vim.lsp.buf.rename() end)
             nnoremap("[d", function() vim.diagnostic.goto_prev() end)
             nnoremap("]d", function() vim.diagnostic.goto_next() end)
-            nnoremap("<leader>vca", function() vim.lsp.buf.code_action() end)
-            nnoremap("<leader>vrr", function() vim.lsp.buf.references() end)
-            nnoremap("<leader>vrn", function() vim.lsp.buf.rename() end)
             nnoremap("<A-f>", function() vim.lsp.buf.format({ async = true }) end)
         end,
     }, _config or {})
@@ -76,16 +76,16 @@ require("lspconfig").sumneko_lua.setup(config({
     },
 }))
 
--- require("lspconfig").jdtls.setup(config({
---     settings = {
---         java = {
---             signatureHelp = {
---                 enabled = true,
---                 description = { enabled = false }
---             },
---         }
---     }
--- }))
+require("lspconfig").jdtls.setup(config({
+    settings = {
+        java = {
+            signatureHelp = {
+                enabled = true,
+                description = { enabled = false }
+            },
+        }
+    }
+}))
 
 -- UI
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {

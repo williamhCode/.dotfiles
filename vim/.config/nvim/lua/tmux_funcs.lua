@@ -1,5 +1,3 @@
-local nnoremap = require('keymap').nnoremap
-
 local M = {}
 
 local function create_tmux_split()
@@ -28,27 +26,26 @@ local function create_tmux_split_if_nil()
         end
     end
 end
+
 M.create_tmux_split_if_nil = create_tmux_split_if_nil
 
-M.create_tmux_send_cmd = function(mapping, cmds)
-    nnoremap(mapping, function()
-        unzoom_tmux_pane()
-        create_tmux_split_if_nil()
-        local _cmds = cmds()
-        local cmd
-        if type(_cmds) == "table" then
-            cmd = ""
-            for i, curr_cmd in ipairs(_cmds) do
-                cmd = cmd .. curr_cmd
-                if i < #_cmds then
-                    cmd = cmd .. " && echo && "
-                end
+M.tmux_send_cmd = function(cmds)
+    vim.cmd("wall")
+    unzoom_tmux_pane()
+    create_tmux_split_if_nil()
+    local cmd
+    if type(cmds) == "table" then
+        cmd = ""
+        for i, curr_cmd in ipairs(cmds) do
+            cmd = cmd .. curr_cmd
+            if i < #cmds then
+                cmd = cmd .. " && echo && "
             end
-        else
-            cmd = _cmds
         end
-        require("harpoon.tmux").sendCommand(vim.env.TMUX_SPLIT_ID, cmd .. "\n")
-    end)
+    else
+        cmd = cmds
+    end
+    require("harpoon.tmux").sendCommand(vim.env.TMUX_SPLIT_ID, cmd .. "\n")
 end
 
 return M

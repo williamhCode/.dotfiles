@@ -33,11 +33,11 @@ set termguicolors
 set colorcolumn=120
 set ignorecase
 set smartcase
-set nohlsearch
+" set nohlsearch
 
 set undofile
 
-set t_ti= t_te=
+" set t_ti= t_te=
 
 set pumheight=12
 

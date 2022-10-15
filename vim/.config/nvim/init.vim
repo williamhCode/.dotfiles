@@ -69,6 +69,9 @@ Plug 'justinmk/vim-sneak'
 " harpoon
 Plug 'ThePrimeagen/harpoon'
 
+" copilot
+Plug 'github/copilot.vim'
+
 call plug#end()
 
 " plugin setup
@@ -77,6 +80,8 @@ lua require('init')
 " highlights
 hi NormalFloat guibg=None
 hi FloatBorder guibg=None guifg=#abb2bf
+
+hi Search guibg=#3b3f4c guifg=None
 
 " hi NonText guibg=None
 " hi Normal guibg=None

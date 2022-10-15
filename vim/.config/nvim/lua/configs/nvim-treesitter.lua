@@ -6,7 +6,7 @@ require('nvim-treesitter.configs').setup {
     sync_install = false,
 
     -- List of parsers to ignore installing (for "all")
-    ignore_install = { "phpdoc" },
+    -- ignore_install = { },
 
     highlight = {
         -- `false` will disable the whole extension
@@ -16,7 +16,7 @@ require('nvim-treesitter.configs').setup {
         -- disable highlighting for the `tex` filetype, you need to include `latex` in this list as this is
         -- the name of the parser)
         -- list of language that will be disabled
-        disable = { "" },
+        disable = { "help" },
 
         -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
         -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).

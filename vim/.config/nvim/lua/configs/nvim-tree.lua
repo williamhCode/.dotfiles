@@ -18,7 +18,8 @@ require('nvim-tree').setup {
     view = {
         mappings = {
             list = {
-                { key = { "l", "<CR>", "o" }, action = "edit" },
+                { key = "l", action = "edit" },
+                { key = "<CR>", action = "cd"},
                 { key = "h", action = "close_node" },
                 { key = "J", action = "next_sibling" },
                 { key = "K", action = "prev_sibling" },

@@ -16,10 +16,10 @@ nnoremap x d
 nnoremap X D
 nnoremap xx dd
 
-xnoremap p "_dP
-
-" nnoremap <leader>p "0p
-" nnoremap <leader>P "0P
+nnoremap <leader>p "0p
+nnoremap <leader>P "0P
+xnoremap <leader>p "0p
+xnoremap <leader>P "0P
 
 if exists("g:neovide")
     inoremap <D-v> <C-r>+
@@ -28,7 +28,8 @@ endif
 
 " search for selection
 nnoremap <leader>f *N
-xnoremap <leader>f "ay/<C-r>a/<CR>N
+xmap <leader>f *N
+nnoremap <silent> <leader>n :noh<CR>
 
 " yank to system
 " nnoremap <leader>yy "+y
@@ -51,7 +52,7 @@ command TCB :NvimTreeClipboard
 
 
 " sourcing
-nnoremap <leader>so :so %<CR>
+nnoremap <leader>so :so $MYVIMRC<CR>
 
 function ToggleWrap()
     if (&wrap == 1)
@@ -141,9 +142,8 @@ function _G.better_find_files(opts)
     opts = opts or {}
     -- we only want to do it if we have a gitignore and no .git dir
     if vim.fn.filereadable(".gitignore") == 1 and vim.fn.isdirectory(".git/") == 0 then
-        opts.find_command = { "rg", "--files", "--ignore-file", ".gitignore" }
+        opts.find_command = { "rg", "--files", "--hidden", "--ignore-file", ".gitignore" }
     end
-    opts.find_command = { "rg", "--files", "--hidden"}
     require("telescope.builtin").find_files(opts)
 end
 EOF
@@ -155,8 +155,6 @@ nnoremap <leader>sh <cmd>Telescope oldfiles<CR>
 
 " terminal config
 tnoremap <Esc> <C-\><C-n>
-
-:echo "Hello, world!"
 
 " centered jumping
 function! ScrollUp()
@@ -187,3 +185,11 @@ nnoremap("<leader>j", function() require("harpoon.ui").nav_file(2) end, silent)
 nnoremap("<leader>k", function() require("harpoon.ui").nav_file(3) end, silent)
 nnoremap("<leader>l", function() require("harpoon.ui").nav_file(4) end, silent)
 EOF
+
+nnoremap <leader>sp :call SynStack()<CR>
+function! SynStack()
+  if !exists("*synstack")
+    return
+  endif
+  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunc

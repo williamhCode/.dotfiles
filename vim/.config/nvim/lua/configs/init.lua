@@ -7,6 +7,7 @@ require('configs.nvim-tree')
 require('configs.cmp')
 require('configs.vim-sneak')
 require('configs.lsp_signature')
+require('configs.copilot')
 
 require('configs.onedark')
 require('configs.lualine')
