@@ -37,6 +37,10 @@ gradle wrapper
 
 cat << EOF >> .gitignore
 bin/
+.settings/
+gradle/
+gradlew
+gradlew.bat
 
 .gradle
 **/build/
