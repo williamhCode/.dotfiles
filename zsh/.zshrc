@@ -174,7 +174,7 @@ bindkey -s ^f "~/.local/scripts/tmux-sessionizer.sh\n"
 autoload -U add-zsh-hook
 
 load-local-conf() {
-  if [ -f .zshrc ] && [ $ZRC != $PWD/.zshrc ]; then
+  if [[ -f .zshrc && $ZRC != $PWD/.zshrc ]]; then
     source .zshrc
   fi
 }
@@ -185,9 +185,7 @@ add-zsh-hook chpwd load-local-conf
 # fzf keybinds
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-if [ -z $TMUX ]; then
-    neofetch
-elif [ $(tmux display-message -p '#{window_panes}') -le 1 ]; then
+if [[ -n $TMUX && $(tmux display-message -p '#{window_panes}') -le 1 ]]; then
     neofetch
 fi
 
