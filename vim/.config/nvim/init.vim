@@ -72,6 +72,9 @@ Plug 'ThePrimeagen/harpoon'
 " copilot
 Plug 'github/copilot.vim'
 
+" tagbar
+Plug 'preservim/tagbar'
+
 call plug#end()
 
 " plugin setup

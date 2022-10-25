@@ -13,5 +13,5 @@ end, {})
 
 
 -- nvim tree
-nnoremap("<leader>e", function() require('nvim-tree').toggle() end)
+-- nnoremap("<leader>e", function() require('nvim-tree').toggle() end)
 

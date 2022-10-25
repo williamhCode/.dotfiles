@@ -1,4 +1,5 @@
 let mapleader=" "
+
 nnoremap <SPACE> <Nop>
 
 " better deleting and cutting
@@ -40,11 +41,11 @@ nnoremap <silent> <leader>n :noh<CR>
 
 " stuff
 nnoremap <leader>V ^vg_
-nnoremap <A-a> ggVG
+nnoremap <M-a> ggVG
 
 
 " tree
-nnoremap <silent> <leader>e :NvimTreeToggle<CR>
+nmap <silent> <M-n> :NvimTreeToggle<CR>
 " nnoremap <silent> <leader>tf :NvimTreeFindFile<CR>
 command TF :NvimTreeFindFile
 command TCB :NvimTreeClipboard
@@ -71,7 +72,7 @@ inoremap <C-j> <down>
 inoremap <C-k> <up>
 inoremap <C-l> <right>
 
-inoremap <A-bs> <C-w>
+inoremap <M-bs> <C-w>
 
 " window
 noremap <silent> <C-Left> :vertical resize +3<CR>
@@ -90,16 +91,16 @@ if exists("g:neovide")
     nnoremap <silent> <D-/> :Commentary<cr>
     xnoremap <silent> <D-/> :Commentary<cr>
 else
-    nnoremap <silent> <A-c> :Commentary<cr>
-    xnoremap <silent> <A-c> :Commentary<cr>
+    nnoremap <silent> <M-c> :Commentary<cr>
+    xnoremap <silent> <M-c> :Commentary<cr>
 endif
 
 
 " line moving
-nnoremap <silent> <A-k> :m .-2<CR>==
-nnoremap <silent> <A-j> :m .+1<CR>==
-vnoremap <silent> <A-k> :m '<-2<CR>gv=gv
-vnoremap <silent> <A-j> :m '>+1<CR>gv=gv
+nnoremap <silent> <M-k> :m .-2<CR>==
+nnoremap <silent> <M-j> :m .+1<CR>==
+vnoremap <silent> <M-k> :m '<-2<CR>gv=gv
+vnoremap <silent> <M-j> :m '>+1<CR>gv=gv
 
 " indentation
 if exists("g:neovide")
@@ -110,12 +111,12 @@ if exists("g:neovide")
     xnoremap <D-[> <gv
     xnoremap <D-]> >gv
 else
-    inoremap <A-h> <C-d>
-    inoremap <A-l> <C-t>
-    nnoremap <A-h> <<
-    nnoremap <A-l> >>
-    xnoremap <A-h> <gv
-    xnoremap <A-l> >gv
+    inoremap <M-h> <C-d>
+    inoremap <M-l> <C-t>
+    nnoremap <M-h> <<
+    nnoremap <M-l> >>
+    xnoremap <M-h> <gv
+    xnoremap <M-l> >gv
 endif
 
 " scrolling
@@ -142,7 +143,7 @@ function _G.better_find_files(opts)
     opts = opts or {}
     -- we only want to do it if we have a gitignore and no .git dir
     if vim.fn.filereadable(".gitignore") == 1 and vim.fn.isdirectory(".git/") == 0 then
-        opts.find_command = { "rg", "--files", "--hidden", "--ignore-file", ".gitignore" }
+        opts.find_command = { "rg", "--files", "--ignore-file", ".gitignore" }
     end
     require("telescope.builtin").find_files(opts)
 end
@@ -186,10 +187,6 @@ nnoremap("<leader>k", function() require("harpoon.ui").nav_file(3) end, silent)
 nnoremap("<leader>l", function() require("harpoon.ui").nav_file(4) end, silent)
 EOF
 
-nnoremap <leader>sp :call SynStack()<CR>
-function! SynStack()
-  if !exists("*synstack")
-    return
-  endif
-  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
-endfunc
+" tagbar
+nmap <M-b> :TagbarToggle<CR>
+

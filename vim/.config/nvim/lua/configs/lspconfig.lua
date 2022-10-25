@@ -7,18 +7,19 @@ capabilities.textDocument.completion.completionItem.snippetSupport = false
 local function config(_config)
     return vim.tbl_deep_extend("force", {
         capabilities = capabilities,
-        on_attach = function()
-            nnoremap("gd", function() vim.lsp.buf.definition() end)
-            nnoremap("gD", function() vim.lsp.buf.declaration() end)
-            nnoremap("gh", function() vim.lsp.buf.hover() end)
-            nnoremap("gs", function() vim.lsp.buf.signature_help() end)
-            nnoremap("gr", function() vim.lsp.buf.references() end)
-            nnoremap("<leader>df", function() vim.diagnostic.open_float() end)
-            nnoremap("<leader>dca", function() vim.lsp.buf.code_action() end)
-            nnoremap("<leader>drn", function() vim.lsp.buf.rename() end)
-            nnoremap("[d", function() vim.diagnostic.goto_prev() end)
-            nnoremap("]d", function() vim.diagnostic.goto_next() end)
-            nnoremap("<A-f>", function() vim.lsp.buf.format({ async = true }) end)
+        on_attach = function(client, bufnr)
+            local bufopts = { buffer = bufnr }
+            nnoremap("gd", function() vim.lsp.buf.definition() end, bufopts)
+            nnoremap("gD", function() vim.lsp.buf.declaration() end, bufopts)
+            nnoremap("gh", function() vim.lsp.buf.hover() end, bufopts)
+            nnoremap("gs", function() vim.lsp.buf.signature_help() end, bufopts)
+            nnoremap("gr", function() vim.lsp.buf.references() end, bufopts)
+            nnoremap("<leader>df", function() vim.diagnostic.open_float() end, bufopts)
+            nnoremap("<leader>dca", function() vim.lsp.buf.code_action() end, bufopts)
+            nnoremap("<leader>drn", function() vim.lsp.buf.rename() end, bufopts)
+            nnoremap("[d", function() vim.diagnostic.goto_prev() end, bufopts)
+            nnoremap("]d", function() vim.diagnostic.goto_next() end, bufopts)
+            nnoremap("<A-f>", function() vim.lsp.buf.format({ async = true }) end, bufopts)
         end,
     }, _config or {})
 end

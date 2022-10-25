@@ -12,6 +12,9 @@ require("telescope").setup {
         },
     },
     pickers = {
+        find_files = {
+            hidden = true;
+        },
         buffers = {
             sort_lastused = true,
         },
@@ -39,7 +42,4 @@ require("telescope").setup {
 
 require('telescope').load_extension('fzf')
 -- require('telescope').load_extension('frecency')
-
-
--- better find files
 

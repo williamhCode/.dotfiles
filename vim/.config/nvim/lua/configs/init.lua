@@ -8,6 +8,7 @@ require('configs.cmp')
 require('configs.vim-sneak')
 require('configs.lsp_signature')
 require('configs.copilot')
+require('configs.tagbar')
 
 require('configs.onedark')
 require('configs.lualine')
