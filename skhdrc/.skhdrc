@@ -32,9 +32,6 @@ alt - t : \
     yabai -m window --toggle float; \
     yabai -m window --grid 4:4:1:1:2:2
 
-# alt - d : open /Users/williamhou/.dotfiles/bin/.local/scripts/send_yabai_notification.app --args "testing"
-
-
 # expand float window
 alt - return : yabai -m window --grid 1:1:1:1:1:1
 
@@ -89,7 +86,7 @@ shift + alt - tab : yabai -m query --spaces --space \
   | jq -sre 'add | map(select(."is-minimized"==false)) | sort_by(.display, .frame.y, .frame.x, .id) | . as $array | length as $array_length | index(map(select(."has-focus"==true))) as $has_index | if $array_length - 1 > $has_index then nth($has_index + 1).id else nth(0).id end' \
   | xargs -I{} yabai -m window --focus {}
 
-# services
+# reloading
 ctrl + alt - r : \
     open /Users/williamhou/.dotfiles/bin/.local/scripts/send_yabai_notification.app --args "quick reloading"; \
     launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
