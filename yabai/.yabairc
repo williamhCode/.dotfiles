@@ -32,13 +32,19 @@ yabai -m config bottom_padding               8
 yabai -m config left_padding                 8
 yabai -m config right_padding                8
 yabai -m config window_gap                   8
+yabai -m config external_bar                 all:30:0
 
-yabai -m config --space 3 layout stack
+# yabai -m signal --add event="window_created" action="/Users/williamhou/.dotfiles/bin/.local/scripts/yabai/set_floating.sh 2"
+# yabai -m signal --add event="window_created" action="/Users/williamhou/.dotfiles/bin/.local/scripts/yabai/set_floating.sh 3"
+# yabai -m signal --add event="window_created" action="/Users/williamhou/.dotfiles/bin/.local/scripts/yabai/set_floating.sh 4"
 
-yabai -m rule --add app='^System' manage=off
-yabai -m rule --add title='Preferences$' manage=off
-yabai -m rule --add title='General$' manage=off
-yabai -m rule --add title='Info$' manage=off
+yabai -m rule --add app!='^iTerm2$' manage=off
+# yabai -m rule --add app='^System' manage=off
+# yabai -m rule --add title='Preferences$' manage=off
+# yabai -m rule --add title='General$' manage=off
+# yabai -m rule --add title='Info$' manage=off
+# yabai -m rule --add title='Settings$' manage=off
+# yabai -m rule --add title='^$' manage=off
 
 echo "yabai configuration loaded.."
 
