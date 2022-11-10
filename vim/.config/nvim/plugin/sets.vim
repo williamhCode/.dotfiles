@@ -1,8 +1,8 @@
 set nocompatible
 
-set path+=**
-set wildignore+=*/node_modules/*
-set wildmode=longest,full
+" set path+=**
+" set wildignore+=*/node_modules/*
+" set wildmode=longest,full
 set clipboard+=unnamedplus
 
 set mouse=a
@@ -36,8 +36,6 @@ set smartcase
 " set nohlsearch
 
 set undofile
-
-" set t_ti= t_te=
 
 set pumheight=12
 

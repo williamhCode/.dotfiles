@@ -4,17 +4,15 @@ local resolve_spaces = require('utils').resolve_spaces
 
 if vim.fn.filereadable("build.gradle") == 1 then
     nnoremap("<leader>r", function()
-        local command = {
-            "./gradlew assemble",
-            "java -jar " .. vim.fn.resolve("build/libs/" .. vim.fn.fnamemodify(vim.fn.getcwd(), ":t") .. ".jar")
-        }
+        local command = "java -jar " ..
+            vim.fn.resolve("build/libs/" .. vim.fn.fnamemodify(vim.fn.getcwd(), ":t") .. ".jar")
         tmux_send_cmd(command)
     end)
 
-    -- test java
+    -- build + run
     nnoremap("<leader>R", function()
         local command = {
-            "./gradlew build",
+            "./gradlew assemble",
             "java -jar " .. vim.fn.resolve("build/libs/" .. string.match(vim.fn.getcwd(), "/(%w+)$") .. ".jar")
         }
         tmux_send_cmd(command)
@@ -38,7 +36,8 @@ else
     end)
 
     nnoremap("<leader>r", function()
-        local command = "java " .. resolve_spaces(vim.fn.expand('%:t:r'))
+        local command = "java " ..
+            "-classpath " .. resolve_spaces(vim.fn.expand('%:p:h')) .. " " .. resolve_spaces(vim.fn.expand('%:t:r'))
         tmux_send_cmd(command)
     end)
 

@@ -32,7 +32,7 @@ ZSH_THEME="robbyrussell"
 # zstyle ':omz:update' frequency 13
 
 # Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS="true"
+DISABLE_MAGIC_FUNCTIONS="true"
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -138,43 +138,53 @@ unset __conda_setup
 unsetopt autocd
 
 # prevent duplicate path in tmux
-if [ -z $TMUX ]; then
+if [[ -z $TMUX ]]; then
     export PATH="$PATH:/Applications/MATLAB_R2021a.app/bin"
     export PATH="$PATH:/Users/williamhou/.dotnet/tools"
     export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+    export PATH="$PATH:/Users/williamhou/.local/scripts"
 fi
 
 export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
 
-export VRC="$HOME/.config/nvim"
-export ZRC="$HOME/.zshrc"
-export PCODING="/Users/williamhou/Documents/Coding/Personal-coding"
-export CODING="/Users/williamhou/Documents/Coding/"
+# directories
+vrc="$HOME/.config/nvim"
+zrc="$HOME/.zshrc"
+pco="/Users/williamhou/Documents/Coding/Personal-coding"
+co="/Users/williamhou/Documents/Coding/"
+alias cs="cd /Users/williamhou/Documents/Coding/CS180"
+alias v="vim ."
+alias a="tmux attach"
 
-alias vim="nvim"
 alias ibrew="arch -x86_64 /usr/local/bin/brew"
-# alias dotnet="/usr/local/share/dotnet/dotnet"
-# alias idotnet="/usr/local/share/dotnet/x64/dotnet"
-alias java_gradle_init="~/.local/scripts/java_gradle_init.sh"
 
 export TERM="xterm-256color"
 
-export VISUAL=nvim
+# vim
+alias vim="nvim"
+export VISUAL="nvim"
 export EDITOR="$VISUAL"
 
-export PU_SSH="hou169@data.cs.purdue.edu"
-local PU_SSH_PASSWORD=$(security find-generic-password -a "$USER" -s "pu_ssh_password" -w)
-alias ssh_pu="~/.local/scripts/exp.sh $PU_SSH_PASSWORD ssh hou169@data.cs.purdue.edu"
-alias sftp_pu="~/.local/scripts/exp.sh $PU_SSH_PASSWORD sftp hou169@data.cs.purdue.edu"
+# ssh
+function ssh_alias()
+{
+    local pu_server="hou169@data.cs.purdue.edu"
+    local pu_ssh_password=$(security find-generic-password -a "$USER" -s "pu_ssh_password" -w)
+    alias ssh_pu="~/.local/scripts/exp.sh $pu_ssh_password ssh $pu_server"
+    alias sftp_pu="~/.local/scripts/exp.sh $pu_ssh_password sftp $pu_server"
+}
+ssh_alias
 
+# tmux
 bindkey -s ^f "~/.local/scripts/tmux-sessionizer.sh\n"
+alias tms="~/.local/scripts/tmux-sessionizer.sh \${PWD}"
 
 # local zshrc sourcing
 autoload -U add-zsh-hook
 
 load-local-conf() {
-  if [[ -f .zshrc && $ZRC != $PWD/.zshrc ]]; then
+  if [[ -f .zshrc && $HOME != $PWD ]]; then
     source .zshrc
   fi
 }

@@ -58,8 +58,8 @@ cmp.setup({
         ["<Tab>"] = cmp.mapping(function(fallback)
             if luasnip.expand_or_jumpable() then
                 luasnip.expand_or_jump()
-            elseif cmp.visible() then
-                vim.api.nvim_feedkeys(key("<Tab>"), "n", false)
+            -- elseif cmp.visible() then
+            --     vim.api.nvim_feedkeys(key("<Tab>"), "n", false)
             else
                 fallback()
             end
@@ -68,8 +68,8 @@ cmp.setup({
         ["<S-Tab>"] = cmp.mapping(function(fallback)
             if luasnip.jumpable(-1) then
                 luasnip.jump(-1)
-            elseif cmp.visible() then
-                vim.api.nvim_feedkeys(key("<S-Tab>"), "n", false)
+            -- elseif cmp.visible() then
+            --     vim.api.nvim_feedkeys(key("<S-Tab>"), "n", false)
             else
                 fallback()
             end

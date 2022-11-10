@@ -11,8 +11,8 @@ yabai -m config window_shadow                on
 yabai -m config window_opacity               off
 yabai -m config window_opacity_duration      0.0
 yabai -m config window_animation_duration    0.2
-yabai -m config active_window_opacity        1.0
-yabai -m config normal_window_opacity        0.90
+yabai -m config active_window_opacity        0.1
+yabai -m config normal_window_opacity        0.95
 yabai -m config window_border                off
 yabai -m config window_border_width          6
 yabai -m config active_window_border_color   0xff775759
@@ -38,7 +38,7 @@ yabai -m config external_bar                 all:30:0
 # yabai -m signal --add event="window_created" action="/Users/williamhou/.dotfiles/bin/.local/scripts/yabai/set_floating.sh 3"
 # yabai -m signal --add event="window_created" action="/Users/williamhou/.dotfiles/bin/.local/scripts/yabai/set_floating.sh 4"
 
-yabai -m rule --add app!='^iTerm2$' manage=off
+yabai -m rule --add app!='^kitty$' manage=off
 # yabai -m rule --add app='^System' manage=off
 # yabai -m rule --add title='Preferences$' manage=off
 # yabai -m rule --add title='General$' manage=off

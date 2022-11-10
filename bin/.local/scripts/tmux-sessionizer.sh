@@ -18,7 +18,7 @@ fi
 
 selected_name=$(basename "$selected" | tr . _)
 
-# if tmux is not attached, create session/ attach
+# if tmux is not attached, create session or attach to session
 if [[ -z $TMUX ]]; then
     tmux new-session -A -s "$selected_name" -c "$selected"
 

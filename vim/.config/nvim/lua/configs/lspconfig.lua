@@ -1,7 +1,7 @@
 local Remap = require("keymap")
 local nnoremap = Remap.nnoremap
 
-local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = false
 
 local function config(_config)
@@ -14,12 +14,12 @@ local function config(_config)
             nnoremap("gh", function() vim.lsp.buf.hover() end, bufopts)
             nnoremap("gs", function() vim.lsp.buf.signature_help() end, bufopts)
             nnoremap("gr", function() vim.lsp.buf.references() end, bufopts)
-            nnoremap("<leader>df", function() vim.diagnostic.open_float() end, bufopts)
-            nnoremap("<leader>dca", function() vim.lsp.buf.code_action() end, bufopts)
-            nnoremap("<leader>drn", function() vim.lsp.buf.rename() end, bufopts)
+            nnoremap("<leader>lf", function() vim.diagnostic.open_float() end, bufopts)
+            nnoremap("<leader>lca", function() vim.lsp.buf.code_action() end, bufopts)
+            nnoremap("<leader>lrn", function() vim.lsp.buf.rename() end, bufopts)
             nnoremap("[d", function() vim.diagnostic.goto_prev() end, bufopts)
             nnoremap("]d", function() vim.diagnostic.goto_next() end, bufopts)
-            nnoremap("<A-f>", function() vim.lsp.buf.format({ async = true }) end, bufopts)
+            nnoremap("<A-F>", function() vim.lsp.buf.format({ async = true }) end, bufopts)
         end,
     }, _config or {})
 end
@@ -48,8 +48,8 @@ local runtime_path = vim.split(package.path, ";")
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 
-require("lua-dev").setup({
-  -- add any options here, or leave empty to use the default settings
+require("neodev").setup({
+    -- add any options here, or leave empty to use the default settings
 })
 
 require("lspconfig").sumneko_lua.setup(config({
@@ -87,6 +87,14 @@ require("lspconfig").jdtls.setup(config({
         }
     }
 }))
+
+local pid = vim.fn.getpid()
+local omnisharp_bin = "/Users/williamhou/.local/share/nvim/mason/bin/omnisharp-mono"
+require("lspconfig").omnisharp_mono.setup(config({
+    cmd = { omnisharp_bin, "--languageserver", "--hostPID", tostring(pid) },
+}))
+
+-- require("lspconfig").omnisharp.setup(config())
 
 -- UI
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {

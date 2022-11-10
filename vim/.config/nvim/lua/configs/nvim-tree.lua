@@ -47,10 +47,10 @@ require('nvim-tree').setup {
     filters = {
         dotfiles = false,
         custom = {
-            ".DS_Store",
+            "\\.DS_Store", "\\.meta$"
         },
         exclude = {
-            ".gitignore"
+            "\\.gitignore"
         }
     },
     log = {

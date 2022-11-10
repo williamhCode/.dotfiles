@@ -54,7 +54,7 @@ local cfg = {
 }
 
 -- recommended:
--- require'lsp_signature'.setup(cfg) -- no need to specify bufnr if you don't use toggle_key
+require'lsp_signature'.setup(cfg) -- no need to specify bufnr if you don't use toggle_key
 
 vim.api.nvim_set_hl(0, 'LspSignatureActiveParameter', { fg = "#61afef", bg = nil, bold = true, italic = false})
 
