@@ -4,6 +4,7 @@ custom_onedark.normal.c.fg = c.fg
 
 require('lualine').setup({
     options = {
+        -- theme = 'nord'
         theme = custom_onedark
     }
 })

@@ -1,34 +1,5 @@
 local M = {}
 
-function M.gotoTerminal(idx)
-    log.trace("tmux: gotoTerminal(): Window:", idx)
-    local window_handle = find_terminal(idx)
-
-    if window_handle.pane then
-        local _, ret, stderr = utils.get_os_command_output({
-            "tmux",
-            "select-pane",
-            "-t",
-            window_handle.window_id,
-        }, vim.loop.cwd())
-
-        if ret ~= 0 then
-            error("Failed to go to terminal." .. stderr[1])
-        end
-    end
-
-    local _, ret, stderr = utils.get_os_command_output({
-        "tmux",
-        "select-window",
-        "-t",
-        window_handle.window_id,
-    }, vim.loop.cwd())
-
-    if ret ~= 0 then
-        error("Failed to go to terminal." .. stderr[1])
-    end
-end
-
 local function create_tmux_split()
     local cmd = 'tmux split-window -h -l 32% -P -F "#{pane_id}" && tmux last-pane'
     local out = vim.fn.system(cmd)
@@ -74,6 +45,7 @@ M.tmux_send_cmd = function(cmds)
     else
         cmd = cmds
     end
+    -- vim.fn.system("tmux send-keys -t " .. vim.env.TMUX_SPLIT_ID .. " C-c")
     require("harpoon.tmux").sendCommand(vim.env.TMUX_SPLIT_ID, cmd .. "\n")
 end
 

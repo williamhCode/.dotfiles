@@ -1,37 +1,38 @@
-local nnoremap = require('keymap').nnoremap
-local xnoremap = require('keymap').xnoremap
-local create_tmux_split_if_nil = require('tmux_funcs').create_tmux_split_if_nil
+local map = vim.keymap.set
+local create_tmux_split_if_nil = require("utils.tmux").create_tmux_split_if_nil
 
 
-nnoremap("<leader>f", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
-nnoremap("<C-_>", "<C-^>")
+map('n', "<leader>f", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
+map('x', "<leader>f", '"fy:%s/<C-r>f/<C-r>f/gI<Left><Left><Left>')
+map('n', "<C-_>", "<C-^>")
+
 
 -- tmux pane
-nnoremap("<leader>t", function()
+map('n', "<leader>t", function()
     create_tmux_split_if_nil()
     require("harpoon.tmux").gotoTerminal(vim.env.TMUX_SPLIT_ID)
 end)
 
 
 -- nvim tree
--- nnoremap("<leader>e", function() require('nvim-tree').toggle() end)
+-- map('n', "<leader>e", function() require('nvim-tree').toggle() end)
 
 -- quickfix shortcuts
-nnoremap("<leader>k", "<cmd>cnext<CR>zz")
-nnoremap("<leader>j", "<cmd>cprev<CR>zz")
+map('n', "<leader>k", "<cmd>cnext<CR>zz")
+map('n', "<leader>j", "<cmd>cprev<CR>zz")
 
 
 -- commenting
-nnoremap("<M-/>", "<Plug>(comment_toggle_linewise_current)")
-xnoremap("<M-/>", "<Plug>(comment_toggle_linewise_visual)")
+map('n', "<M-/>", "<Plug>(comment_toggle_linewise_current)")
+map('x', "<M-/>", "<Plug>(comment_toggle_linewise_visual)")
 
 
 -- harpoon config
 local silent = { silent = true }
-nnoremap("<leader>a", function() require("harpoon.mark").add_file() end, silent)
-nnoremap("<leader>m", function() require("harpoon.ui").toggle_quick_menu() end, silent)
+map('n', "<leader>a", function() require("harpoon.mark").add_file() end, silent)
+map('n', "<leader>m", function() require("harpoon.ui").toggle_quick_menu() end, silent)
 for i = 1, 9 do
-    nnoremap(string.format("<leader>%d", i), function() require("harpoon.ui").nav_file(i) end, silent)
+    map('n', string.format("<leader>%d", i), function() require("harpoon.ui").nav_file(i) end, silent)
 end
 
 
@@ -45,10 +46,17 @@ local function better_find_files(opts)
     require("telescope.builtin").find_files(opts)
 end
 
+map('n', "<C-p>", ":Telescope<CR>")
+map('n', "<leader>sf", better_find_files)
+map('n', "<leader>sg", function() require("telescope.builtin").live_grep({ hidden = true }) end)
+map('n', "<leader>sb", function() require("telescope.builtin").buffers() end)
+map('n', "<leader>so", function() require("telescope.builtin").oldfiles() end)
+-- map('n', "<leader>sh", ":Telescope harpoon marks<CR>")
 
-nnoremap("<C-p>", ":Telescope<CR>")
-nnoremap("<leader>sf", better_find_files)
-nnoremap("<leader>sg", require("telescope.builtin").live_grep)
-nnoremap("<leader>sb", require("telescope.builtin").buffers)
-nnoremap("<leader>so", require("telescope.builtin").oldfiles)
--- nnoremap("<leader>sh", ":Telescope harpoon marks<CR>")
+-- tmux navigator
+vim.keymap.set('n', "<C-h>", '<CMD>NavigatorLeft<CR>')
+vim.keymap.set('n', "<C-l>", '<CMD>NavigatorRight<CR>')
+vim.keymap.set('n', "<C-k>", '<CMD>NavigatorUp<CR>')
+vim.keymap.set('n', "<C-j>", '<CMD>NavigatorDown<CR>')
+-- vim.keymap.set('n', "<A-p>", '<CMD>NavigatorPrevious<CR>')
+

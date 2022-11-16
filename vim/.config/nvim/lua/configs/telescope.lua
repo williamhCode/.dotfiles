@@ -13,7 +13,7 @@ require("telescope").setup {
     },
     pickers = {
         find_files = {
-            hidden = true;
+            hidden = true,
         },
         live_grep = {
             additional_args = function(opts)
@@ -36,16 +36,28 @@ require("telescope").setup {
             case_mode = "smart_case", -- or "ignore_case" or "respect_case"
             -- the default case_mode is "smart_case"
         },
-        -- frecency = {
-        --     default_workspace = 'CWD',
-        --     ignore_patterns = {
-        --         ".git/",
-        --         ".DS_Store"
-        --     }
-        -- }
+        ["ui-select"] = {
+            require("telescope.themes").get_dropdown {
+                -- even more opts
+            }
+
+            -- pseudo code / specification for writing custom displays, like the one
+            -- for "codeactions"
+            -- specific_opts = {
+            --   [kind] = {
+            --     make_indexed = function(items) -> indexed_items, width,
+            --     make_displayer = function(widths) -> displayer
+            --     make_display = function(displayer) -> function(e)
+            --     make_ordinal = function(e) -> string
+            --   },
+            --   -- for example to disable the custom builtin "codeactions" display
+            --      do the following
+            --   codeactions = false,
+            -- }
+        }
     }
 }
 
 require('telescope').load_extension('fzf')
+require("telescope").load_extension("ui-select")
 -- require("telescope").load_extension('harpoon')
--- require('telescope').load_extension('frecency')

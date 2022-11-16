@@ -7,20 +7,7 @@ capabilities.textDocument.completion.completionItem.snippetSupport = false
 local function config(_config)
     return vim.tbl_deep_extend("force", {
         capabilities = capabilities,
-        on_attach = function(client, bufnr)
-            local bufopts = { buffer = bufnr }
-            nnoremap("gd", function() vim.lsp.buf.definition() end, bufopts)
-            nnoremap("gD", function() vim.lsp.buf.declaration() end, bufopts)
-            nnoremap("gh", function() vim.lsp.buf.hover() end, bufopts)
-            nnoremap("gs", function() vim.lsp.buf.signature_help() end, bufopts)
-            nnoremap("gr", function() vim.lsp.buf.references() end, bufopts)
-            nnoremap("<leader>lf", function() vim.diagnostic.open_float() end, bufopts)
-            nnoremap("<leader>lca", function() vim.lsp.buf.code_action() end, bufopts)
-            nnoremap("<leader>lrn", function() vim.lsp.buf.rename() end, bufopts)
-            nnoremap("[d", function() vim.diagnostic.goto_prev() end, bufopts)
-            nnoremap("]d", function() vim.diagnostic.goto_next() end, bufopts)
-            nnoremap("<A-F>", function() vim.lsp.buf.format({ async = true }) end, bufopts)
-        end,
+        on_attach = require("utils.lsp").on_attach,
     }, _config or {})
 end
 
@@ -77,17 +64,6 @@ require("lspconfig").sumneko_lua.setup(config({
     },
 }))
 
-require("lspconfig").jdtls.setup(config({
-    settings = {
-        java = {
-            signatureHelp = {
-                enabled = true,
-                description = { enabled = false }
-            },
-        }
-    }
-}))
-
 local pid = vim.fn.getpid()
 local omnisharp_bin = "/Users/williamhou/.local/share/nvim/mason/bin/omnisharp-mono"
 require("lspconfig").omnisharp_mono.setup(config({
@@ -95,6 +71,17 @@ require("lspconfig").omnisharp_mono.setup(config({
 }))
 
 -- require("lspconfig").omnisharp.setup(config())
+
+-- require("lspconfig").jdtls.setup(config({
+--     settings = {
+--         java = {
+--             signatureHelp = {
+--                 enabled = true,
+--                 description = { enabled = false }
+--             },
+--         }
+--     }
+-- }))
 
 -- UI
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
