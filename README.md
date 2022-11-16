@@ -2,7 +2,7 @@
 
 Terminal: kitty  
 Terminal multiplexer: tmux  
-Shell: zsh
+Shell: zsh  
 Editor: neovim  
 Window manager: yabai  
 Theme: onedark
