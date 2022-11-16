@@ -1,4 +1,4 @@
-### My dotfiles yayay!
+## My dotfiles yayay!
 
 Terminal: kitty  
 Terminal multiplexer: tmux  
