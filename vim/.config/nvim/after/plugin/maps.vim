@@ -66,12 +66,12 @@ noremap <silent> <C-Down> :resize -3<CR>
 nnoremap <silent> <C-c> <C-w>c
 
 " indentation
-inoremap <M-[> <C-d>
-inoremap <M-]> <C-t>
-nnoremap <M-[> <<
-nnoremap <M-]> >>
-xnoremap <M-[> <gv
-xnoremap <M-]> >gv
+inoremap <M-h> <C-d>
+inoremap <M-l> <C-t>
+nnoremap <M-h> <<
+nnoremap <M-l> >>
+xnoremap <M-h> <gv
+xnoremap <M-l> >gv
 
 " scrolling
 noremap <ScrollWheelUp> <C-y>
@@ -96,13 +96,13 @@ tnoremap <Esc> <C-\><C-n>
 " centered jumping
 function! ScrollUp()
     set scrolloff=0
-    execute 'normal! ' . "\<C-u>"
+    execute 'normal! ' . "20\<C-u>"
     set scrolloff=8
 endfunction
 
 function! ScrollDown()
     set scrolloff=0
-    execute 'normal! ' . "\<C-d>"
+    execute 'normal! ' . "20\<C-d>"
     set scrolloff=8
 endfunction
 

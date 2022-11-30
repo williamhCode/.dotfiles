@@ -30,13 +30,11 @@ set splitbelow splitright
 set laststatus=3
 set cursorline
 set termguicolors
-set colorcolumn=120
 set ignorecase
 set smartcase
 set nohlsearch
 
 set undofile
-
 set pumheight=12
 
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o

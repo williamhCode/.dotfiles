@@ -1,11 +1,24 @@
 local map = vim.keymap.set
+local command = vim.api.nvim_create_user_command
 local create_tmux_split_if_nil = require("utils.tmux").create_tmux_split_if_nil
 
 
+-- general
 map('n', "<leader>f", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
 map('x', "<leader>f", '"fy:%s/<C-r>f/<C-r>f/gI<Left><Left><Left>')
 map('n', "<C-_>", "<C-^>")
 
+-- map('n', "<C-u>", "20<C-u>zz", { silent = true })
+-- map('n', "<C-d>", "20<C-d>zz", { silent = true })
+map('x', "<C-u>", "20<C-u>", { silent = true })
+map('x', "<C-d>", "20<C-d>", { silent = true })
+
+command('OP', "silent !open .", {})
+command('CP', "let @+ = expand('%:p')", {})
+
+-- tab movement
+map('n', "<leader>]", "gt")
+map('n', "<leader>[", "gT")
 
 -- tmux pane
 map('n', "<leader>t", function()
@@ -59,4 +72,3 @@ vim.keymap.set('n', "<C-l>", '<CMD>NavigatorRight<CR>')
 vim.keymap.set('n', "<C-k>", '<CMD>NavigatorUp<CR>')
 vim.keymap.set('n', "<C-j>", '<CMD>NavigatorDown<CR>')
 -- vim.keymap.set('n', "<A-p>", '<CMD>NavigatorPrevious<CR>')
-

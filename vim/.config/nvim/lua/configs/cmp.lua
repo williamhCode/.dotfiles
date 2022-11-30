@@ -31,9 +31,9 @@ local kind_icons = {
 }
 -- find more here: https://www.nerdfonts.com/cheat-sheet
 
-local key = function(mapping)
-    return vim.api.nvim_replace_termcodes(mapping, true, false, true)
-end
+-- local key = function(mapping)
+--     return vim.api.nvim_replace_termcodes(mapping, true, false, true)
+-- end
 
 cmp.setup({
     performance = {

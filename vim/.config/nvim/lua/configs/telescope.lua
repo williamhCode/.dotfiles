@@ -1,6 +1,6 @@
 require("telescope").setup {
     defaults = {
-        layout_strategy = "flex",
+        layout_strategy = "vertical",
         file_ignore_patterns = {
             "^%.git/",
             ".DS_Store",

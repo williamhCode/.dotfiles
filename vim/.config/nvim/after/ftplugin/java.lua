@@ -23,7 +23,8 @@ local config = {
         '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
 
         -- 💀
-        '-jar', home .. '/.local/share/nvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar',
+        '-jar',
+        home .. '/.local/share/nvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar',
         -- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^                                       ^^^^^^^^^^^^^^
         -- Must point to the                                                     Change this to
         -- eclipse.jdt.ls installation                                           the actual version
@@ -44,7 +45,7 @@ local config = {
     -- 💀
     -- This is the default if not provided, you can remove it. Or adjust as needed.
     -- One dedicated LSP server & client will be started per unique root_dir
-    root_dir = require('jdtls.setup').find_root({'.git', 'gradlew'}),
+    root_dir = require('jdtls.setup').find_root({ '.git', 'mvnw', 'gradlew' }),
 
     -- Here you can configure eclipse.jdt.ls specific settings
     -- See https://github.com/eclipse/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line#initialize-request
@@ -58,16 +59,16 @@ local config = {
         }
     },
 
-  -- Language server `initializationOptions`
-  -- You need to extend the `bundles` with paths to jar files
-  -- if you want to use additional eclipse.jdt.ls plugins.
-  --
-  -- See https://github.com/mfussenegger/nvim-jdtls#java-debug-installation
-  --
-  -- If you don't plan on using the debugger or other eclipse.jdt.ls plugins you can remove this
-  init_options = {
-    bundles = {}
-  },
+    -- Language server `initializationOptions`
+    -- You need to extend the `bundles` with paths to jar files
+    -- if you want to use additional eclipse.jdt.ls plugins.
+    --
+    -- See https://github.com/mfussenegger/nvim-jdtls#java-debug-installation
+    --
+    -- If you don't plan on using the debugger or other eclipse.jdt.ls plugins you can remove this
+    init_options = {
+        bundles = {}
+    },
 }
 
 config['on_attach'] = require("utils.lsp").on_attach
@@ -77,6 +78,8 @@ config['on_attach'] = require("utils.lsp").on_attach
 require('jdtls').start_or_attach(config)
 
 -- rest of the stuff
+vim.opt.colorcolumn = "120"
+
 local map = vim.keymap.set
 local tmux_send_cmd = require("utils.tmux").tmux_send_cmd
 local resolve_spaces = require('utils').resolve_spaces
@@ -126,3 +129,4 @@ else
         tmux_send_cmd(command)
     end)
 end
+
