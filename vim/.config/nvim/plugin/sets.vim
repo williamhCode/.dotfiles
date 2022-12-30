@@ -1,9 +1,6 @@
 set nocompatible
 
-" set path+=**
-" set wildignore+=*/node_modules/*
-" set wildmode=longest,full
-set clipboard+=unnamedplus
+" set clipboard+=unnamedplus
 
 set mouse=a
 
@@ -27,12 +24,14 @@ set sidescrolloff=10
 set signcolumn=yes
 set wildmenu
 set splitbelow splitright
-set laststatus=3
+" gloabl statusline
+set laststatus=3 
 set cursorline
 set termguicolors
 set ignorecase
 set smartcase
 set nohlsearch
+set noshowmode
 
 set undofile
 set pumheight=12

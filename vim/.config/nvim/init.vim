@@ -35,8 +35,9 @@ Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'saadparwaiz1/cmp_luasnip'
 
-Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
+" Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
 " Plug 'ray-x/lsp_signature.nvim'
+Plug 'Issafalcon/lsp-overloads.nvim'
 
 " telescope stuff
 Plug 'nvim-telescope/telescope.nvim' , { 'tag': '0.1.0' }
@@ -58,6 +59,9 @@ Plug 'Vimjas/vim-python-pep8-indent'
 " Plug 'yioneko/nvim-yati'
 
 " extras -----------------------------------------------
+" terminal
+Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
+
 " snippets
 Plug 'L3MON4D3/LuaSnip'
 Plug 'rafamadriz/friendly-snippets'
@@ -81,7 +85,7 @@ Plug 'github/copilot.vim'
 Plug 'preservim/tagbar'
 
 " better f/t indicators
-Plug 'jinh0/eyeliner.nvim'
+" Plug 'jinh0/eyeliner.nvim'
 
 call plug#end()
 
@@ -92,4 +96,6 @@ lua require('init')
 hi NormalFloat guibg=None
 hi FloatBorder guibg=None guifg=#abb2bf
 hi Search guibg=#3b3f4c guifg=None
+" hi LspSignatureActiveParameter guibg=None guifg=#61afef gui=bold
+hi LspSignatureActiveParameter guibg=#3b3f4c guifg=None
 

@@ -1,14 +1,19 @@
 local map = vim.keymap.set
-local tmux_send_cmd = require("utils.tmux").tmux_send_cmd
-local resolve_spaces = require('utils').resolve_spaces
+local exec_command = require("utils.toggleterm").exec_command
+local build_cmd = require("utils.toggleterm").build_cmd
 
 map('n', "<leader>r", function()
-    local command = "python " .. resolve_spaces(vim.fn.resolve(vim.fn.expand('%:p')))
-    tmux_send_cmd(command)
-end)
+    exec_command({ cmd = "python %", open = false })
+end, { buffer = true })
+
+map('n', "<leader>R", function()
+    exec_command("python %")
+end, { buffer = true })
 
 map('n', "<leader>b", function()
-    local command = "python setup.py"
-    tmux_send_cmd(command)
-end)
-
+    exec_command({
+        cmd = build_cmd("python setup.py build_ext --inplace"),
+        open = false
+    })
+    print("Building ...")
+end, { buffer = true })

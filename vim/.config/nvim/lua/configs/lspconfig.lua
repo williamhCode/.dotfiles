@@ -61,23 +61,23 @@ require("lspconfig").sumneko_lua.setup(config({
     },
 }))
 
-local pid = vim.fn.getpid()
-local omnisharp_bin = "/Users/williamhou/.local/share/nvim/mason/bin/omnisharp-mono"
-require("lspconfig").omnisharp_mono.setup(config({
-    cmd = { omnisharp_bin, "--languageserver", "--hostPID", tostring(pid) },
-}))
+-- local pid = vim.fn.getpid()
+-- local omnisharp_bin = "/Users/williamhou/.local/share/nvim/mason/bin/omnisharp-mono"
+-- require("lspconfig").omnisharp_mono.setup(config({
+--     cmd = { omnisharp_bin, "--languageserver", "--hostPID", tostring(pid) },
+-- }))
 
--- require("lspconfig").omnisharp.setup(config())
+require("lspconfig").omnisharp.setup(config())
 
 -- require("lspconfig").jdtls.setup(config({
---     settings = {
---         java = {
---             signatureHelp = {
---                 enabled = true,
---                 description = { enabled = false }
---             },
---         }
+-- settings = {
+--     java = {
+--         signatureHelp = {
+--             enabled = true,
+--             description = { enabled = false }
+--         },
 --     }
+-- }
 -- }))
 
 -- UI
@@ -95,3 +95,4 @@ function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
     opts.border = opts.border or "rounded"
     return orig_util_open_floating_preview(contents, syntax, opts, ...)
 end
+

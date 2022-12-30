@@ -17,10 +17,34 @@ nnoremap x d
 nnoremap X D
 nnoremap xx dd
 
-nnoremap <leader>p "0p
-nnoremap <leader>P "0P
-xnoremap <leader>p "0p
-xnoremap <leader>P "0P
+nnoremap <leader>p "+p
+nnoremap <leader>P "+P
+xnoremap <leader>p "+p
+xnoremap <leader>P "+P
+
+nnoremap <leader>y "+y
+nnoremap <leader>Y "+Y
+xnoremap <leader>y "+y
+xnoremap <leader>Y "+Y
+
+" replacing
+let g:mc = "y/\\V\<C-r>=escape(@\", '/')\<CR>\<CR>"
+
+nnoremap cn *``cgn
+nnoremap cN *``cgN
+
+vnoremap <expr> <leader>cn g:mc . "``cgn"
+vnoremap <expr> <leader>cN g:mc . "``cgN"
+
+function! SetupCR()
+  nnoremap <Enter> :nnoremap <lt>Enter> n@z<CR>q:<C-u>let @z=strpart(@z,0,strlen(@z)-1)<CR>n@z
+endfunction
+
+nnoremap cq :call SetupCR()<CR>*``qz
+nnoremap cQ :call SetupCR()<CR>#``qz
+
+vnoremap <expr> <leader>cq ":\<C-u>call SetupCR()\<CR>" . "gv" . g:mc . "``qz"
+vnoremap <expr> <leader>cQ ":\<C-u>call SetupCR()\<CR>" . "gv" . substitute(g:mc, '/', '?', 'g') . "``qz"
 
 " search for selection
 nnoremap <silent> <leader>n :noh<CR>
@@ -110,7 +134,7 @@ nnoremap <silent> <C-u> :call ScrollUp()<CR>zz
 nnoremap <silent> <C-d> :call ScrollDown()<CR>zz
 
 " tagbar
-nmap <M-b> :TagbarToggle<CR>
+nmap <silent> <M-b> :TagbarToggle<CR>
 
 function! SynStack()
   if !exists("*synstack")

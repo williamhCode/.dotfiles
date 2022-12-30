@@ -4,7 +4,6 @@ require('nvim-tree').setup {
     hijack_netrw = true,
     hijack_cursor = false,
     reload_on_bufenter = true,
-    create_in_closed_folder = true;
     sync_root_with_cwd = true;
     update_focused_file = {
         enable = false,
@@ -13,17 +12,28 @@ require('nvim-tree').setup {
         enable = true,
         ignore = false,
         show_on_dirs = true,
+        show_on_open_dirs = true,
         timeout = 400,
     },
     view = {
         mappings = {
             list = {
                 { key = "l", action = "edit" },
-                { key = "<CR>", action = "cd"},
+                { key = "<CR>", action = "cd" },
                 { key = "h", action = "close_node" },
                 { key = "J", action = "next_sibling" },
                 { key = "K", action = "prev_sibling" },
             },
+        },
+    },
+    diagnostics = {
+        enable = true,
+        show_on_dirs = false,
+        show_on_open_dirs = true,
+        debounce_delay = 50,
+        severity = {
+            min = vim.diagnostic.severity.WARN,
+            max = vim.diagnostic.severity.ERROR,
         },
     },
     renderer = {
@@ -47,10 +57,10 @@ require('nvim-tree').setup {
     filters = {
         dotfiles = false,
         custom = {
-            "\\.DS_Store", "\\.meta$"
+            "^\\.DS_Store$", "\\.meta$"
         },
         exclude = {
-            "\\.gitignore"
+            -- ".zshrc"
         }
     },
     log = {
@@ -62,4 +72,3 @@ require('nvim-tree').setup {
         },
     },
 }
-

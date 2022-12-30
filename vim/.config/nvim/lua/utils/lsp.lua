@@ -3,6 +3,21 @@ local map = vim.keymap.set
 M = {}
 
 M.on_attach = function(client, bufnr)
+    if client.server_capabilities.signatureHelpProvider then
+        require('lsp-overloads').setup(client, {
+            ui = {
+                border = "rounded",
+                close_events = { "CursorMoved", "CursorMovedI", "InsertCharPre" },
+            },
+            keymaps = {
+                next_signature = "<M-n>",
+                previous_signature = "<M-p>",
+                next_parameter = nil,
+                previous_parameter = nil,
+            },
+        })
+    end
+
     if client.server_capabilities.documentHighlightProvider then
         local group = vim.api.nvim_create_augroup("lsp_document_highlight", { clear = false })
         vim.api.nvim_clear_autocmds { buffer = bufnr, group = group }
@@ -23,6 +38,7 @@ M.on_attach = function(client, bufnr)
     map('n', "gD", function() vim.lsp.buf.declaration() end, bufopts)
     map('n', "gh", function() vim.lsp.buf.hover() end, bufopts)
     map('n', "gs", function() vim.lsp.buf.signature_help() end, bufopts)
+    map('i', "<M-x>", function() vim.lsp.buf.signature_help() end, bufopts)
     map('n', "gr", function() vim.lsp.buf.references() end, bufopts)
     map('n', "<leader>lf", function() vim.diagnostic.open_float() end, bufopts)
     map('n', "<leader>lca", function() vim.lsp.buf.code_action() end, bufopts)

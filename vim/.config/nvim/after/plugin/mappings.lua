@@ -1,7 +1,5 @@
 local map = vim.keymap.set
 local command = vim.api.nvim_create_user_command
-local create_tmux_split_if_nil = require("utils.tmux").create_tmux_split_if_nil
-
 
 -- general
 map('n', "<leader>f", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
@@ -19,13 +17,6 @@ command('CP', "let @+ = expand('%:p')", {})
 -- tab movement
 map('n', "<leader>]", "gt")
 map('n', "<leader>[", "gT")
-
--- tmux pane
-map('n', "<leader>t", function()
-    create_tmux_split_if_nil()
-    require("harpoon.tmux").gotoTerminal(vim.env.TMUX_SPLIT_ID)
-end)
-
 
 -- nvim tree
 -- map('n', "<leader>e", function() require('nvim-tree').toggle() end)
@@ -54,7 +45,7 @@ local function better_find_files(opts)
     opts = opts or {}
     -- we only want to do it if we have a gitignore and no .git dir
     if vim.fn.filereadable(".gitignore") == 1 and vim.fn.isdirectory(".git/") == 0 then
-        opts.find_command = { "rg", "--files", "--ignore-file", ".gitignore" }
+        opts.find_command = { "rg", "--files", "--glob", "--ignore-file", ".gitignore" }
     end
     require("telescope.builtin").find_files(opts)
 end

@@ -1,5 +1,6 @@
 local map = vim.keymap.set
-local tmux_send_cmd = require("utils.tmux").tmux_send_cmd
+local exec_command = require("utils.toggleterm").exec_command
+local build_cmd = require("utils.toggleterm").build_cmd
 
 -- vim.api.nvim_create_autocmd("BufWritePost", {
 --     callback = function()
@@ -8,7 +9,10 @@ local tmux_send_cmd = require("utils.tmux").tmux_send_cmd
 -- })
 
 map('n', "<leader>b", function()
-    local command = "python setup.py"
-    tmux_send_cmd(command)
-end)
+    exec_command({
+        cmd = build_cmd("python setup.py build_ext --inplace"),
+        open = false
+    })
+    print("Building ...")
+end, { buffer = true })
 
