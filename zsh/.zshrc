@@ -45,6 +45,8 @@ if [[ -z $TMUX ]]; then
     export PATH="$PATH:/Users/williamhou/.local/scripts"
 fi
 
+export LG_CONFIG_FILE="$HOME/.config/lazygit/config.yml"
+
 export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
 
