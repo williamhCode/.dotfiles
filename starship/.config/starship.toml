@@ -1,2 +1,30 @@
-# Get editor completions based on the config schema
-"$schema" = 'https://starship.rs/config-schema.json'
+add_newline = false
+
+[line_break]
+disabled = true
+
+[package]
+disabled = true
+
+[conda]
+ignore_base = false
+symbol = " "
+
+[python]
+disabled = true
+
+[java]
+disabled = true
+
+[lua]
+disabled = true
+
+[git_branch]
+symbol = " "
+
+[hg_branch]
+symbol = " "
+
+[memory_usage]
+symbol = " "
+

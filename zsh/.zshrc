@@ -27,6 +27,14 @@ unset __conda_setup
 
 # <<< conda initialize <<<
 
+# plugins/tools ----------------------- #
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh # fzf keybinds
+
+# autocomplete
+autoload -U compinit && compinit -u
+
+# settings
 unsetopt autocd
 
 # prevent duplicate path in tmux
@@ -46,7 +54,7 @@ zrc="$HOME/.zshrc"
 pco="/Users/williamhou/Documents/Coding/Personal-coding"
 co="/Users/williamhou/Documents/Coding/"
 alias cs="cd /Users/williamhou/Documents/Coding/CS180"
-alias v="vim ."
+alias v="nvim ."
 alias a="tmux attach"
 
 alias ibrew="arch -x86_64 /usr/local/bin/brew"
@@ -54,9 +62,9 @@ alias ibrew="arch -x86_64 /usr/local/bin/brew"
 export TERM="xterm-256color"
 
 # vim
-alias vim="nvim"
-export VISUAL="nvim"
+export VISUAL="/opt/homebrew/bin/nvim"
 export EDITOR="$VISUAL"
+set -o emacs
 
 # ssh
 function ssh_alias()
@@ -83,9 +91,6 @@ load-local-conf() {
 load-local-conf
 
 add-zsh-hook chpwd load-local-conf
-
-# fzf keybinds
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 if [[ -n $TMUX && $(tmux display-message -p '#{window_panes}') -le 1 ]]; then
     neofetch

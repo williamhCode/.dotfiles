@@ -32,7 +32,10 @@ yabai -m config bottom_padding               8
 yabai -m config left_padding                 8
 yabai -m config right_padding                8
 yabai -m config window_gap                   8
-yabai -m config external_bar                 all:30:0
+# yabai -m config external_bar                 all:30:0
+
+SPACEBAR_HEIGHT=$(spacebar -m config height)
+yabai -m config external_bar                 all:$SPACEBAR_HEIGHT:0
 
 # yabai -m signal --add event="window_created" action="/Users/williamhou/.dotfiles/bin/.local/scripts/yabai/set_floating.sh 2"
 # yabai -m signal --add event="window_created" action="/Users/williamhou/.dotfiles/bin/.local/scripts/yabai/set_floating.sh 3"
