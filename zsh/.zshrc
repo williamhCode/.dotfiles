@@ -28,7 +28,7 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 # plugins/tools ----------------------- #
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+# source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh # fzf keybinds
 
 # autocomplete

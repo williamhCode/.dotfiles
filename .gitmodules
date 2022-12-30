@@ -1,6 +1,0 @@
-[submodule "/Users/williamhou/.dotfiles/zsh/.zsh/zsh-autosuggestions"]
-	path = /Users/williamhou/.dotfiles/zsh/.zsh/zsh-autosuggestions
-	url = https://github.com/zsh-users/zsh-autosuggestions
-[submodule ".zsh/zsh-autosuggestions"]
-	path = .zsh/zsh-autosuggestions
-	url = https://github.com/zsh-users/zsh-autosuggestions.git
