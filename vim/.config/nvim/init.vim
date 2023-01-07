@@ -69,9 +69,6 @@ Plug 'rafamadriz/friendly-snippets'
 " status line
 Plug 'nvim-lualine/lualine.nvim'
 
-" tmux nav
-Plug 'numToStr/Navigator.nvim'
-
 " vim sneak
 " Plug 'justinmk/vim-sneak'
 

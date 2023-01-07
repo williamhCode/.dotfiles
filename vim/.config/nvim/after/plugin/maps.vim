@@ -33,8 +33,8 @@ let g:mc = "y/\\V\<C-r>=escape(@\", '/')\<CR>\<CR>"
 nnoremap cn *``cgn
 nnoremap cN *``cgN
 
-vnoremap <expr> <leader>cn g:mc . "``cgn"
-vnoremap <expr> <leader>cN g:mc . "``cgN"
+xnoremap <expr> <leader>cn g:mc . "``cgn"
+xnoremap <expr> <leader>cN g:mc . "``cgN"
 
 function! SetupCR()
   nnoremap <Enter> :nnoremap <lt>Enter> n@z<CR>q:<C-u>let @z=strpart(@z,0,strlen(@z)-1)<CR>n@z
@@ -43,25 +43,18 @@ endfunction
 nnoremap cq :call SetupCR()<CR>*``qz
 nnoremap cQ :call SetupCR()<CR>#``qz
 
-vnoremap <expr> <leader>cq ":\<C-u>call SetupCR()\<CR>" . "gv" . g:mc . "``qz"
-vnoremap <expr> <leader>cQ ":\<C-u>call SetupCR()\<CR>" . "gv" . substitute(g:mc, '/', '?', 'g') . "``qz"
+xnoremap <expr> <leader>cq ":\<C-u>call SetupCR()\<CR>" . "gv" . g:mc . "``qz"
+xnoremap <expr> <leader>cQ ":\<C-u>call SetupCR()\<CR>" . "gv" . substitute(g:mc, '/', '?', 'g') . "``qz"
 
 " search for selection
 nnoremap <silent> <leader>n :noh<CR>
 
-" yank to system
-" nnoremap <leader>yy "+y
-" nnoremap <leader>y "+y
-" vnoremap <leader>y "+y
-" nmap <leader>Y "+Y
-
 " stuff
-
 nnoremap <leader>V ^vg_
-nnoremap <M-a> ggVG
+nnoremap <M-s>a ggVG
 
 " tree
-nmap <silent> <M-n> :NvimTreeToggle<CR>
+nmap <silent> <M-s>b :NvimTreeToggle<CR>
 command TF :NvimTreeFindFile
 command TCB :NvimTreeClipboard
 " command TCL :NvimTreeCollapseKeepBuffers
@@ -90,12 +83,12 @@ noremap <silent> <C-Down> :resize -3<CR>
 nnoremap <silent> <C-c> <C-w>c
 
 " indentation
-inoremap <M-h> <C-d>
-inoremap <M-l> <C-t>
-nnoremap <M-h> <<
-nnoremap <M-l> >>
-xnoremap <M-h> <gv
-xnoremap <M-l> >gv
+inoremap <M-s>[ <C-d>
+inoremap <M-s>] <C-t>
+nnoremap <M-s>[ <<
+nnoremap <M-s>] >>
+xnoremap <M-s>[ <gv
+xnoremap <M-s>] >gv
 
 " scrolling
 noremap <ScrollWheelUp> <C-y>

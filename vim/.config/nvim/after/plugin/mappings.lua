@@ -2,9 +2,20 @@ local map = vim.keymap.set
 local command = vim.api.nvim_create_user_command
 
 -- general
-map('n', "<leader>f", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
-map('x', "<leader>f", '"fy:%s/<C-r>f/<C-r>f/gI<Left><Left><Left>')
+-- better find and replace
+map('n', "<leader>fr", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
+map('x', "<leader>fr", '"fy:%s/<C-r>f/<C-r>f/gI<Left><Left><Left>')
+
+map('n', "<leader>fc", ":,$s/\\<<C-r><C-w>\\>/<C-r><C-w>/gcI|1,''-&&<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>")
+map('x', "<leader>fc", [["fy:,$s/<C-r>f/<C-r>f/gcI|1,''-&&<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>]])
+
 map('n', "<C-_>", "<C-^>")
+
+-- window movement
+map('n', "<C-h>", '<C-w>h')
+map('n', "<C-l>", '<C-w>l')
+map('n', "<C-k>", '<C-w>k')
+map('n', "<C-j>", '<C-w>j')
 
 -- map('n', "<C-u>", "20<C-u>zz", { silent = true })
 -- map('n', "<C-d>", "20<C-d>zz", { silent = true })
@@ -27,8 +38,8 @@ map('n', "<leader>j", "<cmd>cprev<CR>zz")
 
 
 -- commenting
-map('n', "<M-/>", "<Plug>(comment_toggle_linewise_current)")
-map('x', "<M-/>", "<Plug>(comment_toggle_linewise_visual)")
+map('n', "<M-s>/", "<Plug>(comment_toggle_linewise_current)")
+map('x', "<M-s>/", "<Plug>(comment_toggle_linewise_visual)")
 
 
 -- harpoon config
@@ -56,10 +67,3 @@ map('n', "<leader>sg", function() require("telescope.builtin").live_grep({ hidde
 map('n', "<leader>sb", function() require("telescope.builtin").buffers() end)
 map('n', "<leader>so", function() require("telescope.builtin").oldfiles() end)
 -- map('n', "<leader>sh", ":Telescope harpoon marks<CR>")
-
--- tmux navigator
-vim.keymap.set('n', "<C-h>", '<CMD>NavigatorLeft<CR>')
-vim.keymap.set('n', "<C-l>", '<CMD>NavigatorRight<CR>')
-vim.keymap.set('n', "<C-k>", '<CMD>NavigatorUp<CR>')
-vim.keymap.set('n', "<C-j>", '<CMD>NavigatorDown<CR>')
--- vim.keymap.set('n', "<A-p>", '<CMD>NavigatorPrevious<CR>')

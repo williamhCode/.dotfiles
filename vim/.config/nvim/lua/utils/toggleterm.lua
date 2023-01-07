@@ -1,7 +1,11 @@
 local M = {}
 
-M.build_cmd = function(cmd)
+M.convert_build_cmd = function(cmd)
     return cmd .. [[ && echo "build success" || echo "build failed"]]
+end
+
+M.convert_run_cmd = function(cmd)
+    return cmd .. [[ || echo "runtime error"]]
 end
 
 M.exec_command = function(args)

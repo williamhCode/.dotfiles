@@ -61,24 +61,13 @@ require("lspconfig").sumneko_lua.setup(config({
     },
 }))
 
--- local pid = vim.fn.getpid()
--- local omnisharp_bin = "/Users/williamhou/.local/share/nvim/mason/bin/omnisharp-mono"
--- require("lspconfig").omnisharp_mono.setup(config({
---     cmd = { omnisharp_bin, "--languageserver", "--hostPID", tostring(pid) },
--- }))
+local pid = vim.fn.getpid()
+local omnisharp_bin = "/Users/williamhou/.local/share/nvim/mason/bin/omnisharp-mono"
+require("lspconfig").omnisharp_mono.setup(config({
+    cmd = { omnisharp_bin, "--languageserver", "--hostPID", tostring(pid) },
+}))
 
-require("lspconfig").omnisharp.setup(config())
-
--- require("lspconfig").jdtls.setup(config({
--- settings = {
---     java = {
---         signatureHelp = {
---             enabled = true,
---             description = { enabled = false }
---         },
---     }
--- }
--- }))
+-- require("lspconfig").omnisharp.setup(config())
 
 -- UI
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {

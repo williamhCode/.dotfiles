@@ -8,10 +8,12 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
     end
 })
 
--- pyrex file switching
+-- file switching
+local group = vim.api.nvim_create_augroup("fileswitch_mapping", {})
 local create_fileswitch_map = function(extensions)
     local create_autocmd = function(patterns)
         vim.api.nvim_create_autocmd("BufEnter", {
+            group = group,
             pattern = "*" .. patterns[1],
             callback = function()
                 local path_root = vim.fn.expand('%:r')

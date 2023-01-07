@@ -11,10 +11,11 @@ require('configs.copilot')
 require('configs.tagbar')
 require('configs.luasnip')
 require('configs.Comment')
-require('configs.Navigator')
+-- require('configs.Navigator')
 -- require('configs.eyeliner')
 require('configs.toggleterm')
 
+-- don't move
 require('configs.themes')
 require('configs.lualine')
 
