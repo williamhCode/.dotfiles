@@ -28,9 +28,9 @@ require("lspconfig").ccls.setup(config())
 
 require("lspconfig").vimls.setup(config())
 
-local runtime_path = vim.split(package.path, ";")
-table.insert(runtime_path, "lua/?.lua")
-table.insert(runtime_path, "lua/?/init.lua")
+-- local runtime_path = vim.split(package.path, ";")
+-- table.insert(runtime_path, "lua/?.lua")
+-- table.insert(runtime_path, "lua/?/init.lua")
 
 require("neodev").setup({
     -- add any options here, or leave empty to use the default settings
@@ -43,7 +43,7 @@ require("lspconfig").sumneko_lua.setup(config({
                 -- Tell the language server which version of Lua you"re using (most likely LuaJIT in the case of Neovim)
                 version = "LuaJIT",
                 -- Setup your lua path
-                path = runtime_path,
+                -- path = runtime_path,
             },
             diagnostics = {
                 -- Get the language server to recognize the `vim` global

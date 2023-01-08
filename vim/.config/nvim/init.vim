@@ -35,8 +35,7 @@ Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'saadparwaiz1/cmp_luasnip'
 
-" Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
-" Plug 'ray-x/lsp_signature.nvim'
+" signature help
 Plug 'Issafalcon/lsp-overloads.nvim'
 
 " telescope stuff

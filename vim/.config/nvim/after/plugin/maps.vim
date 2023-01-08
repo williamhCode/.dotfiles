@@ -1,62 +1,53 @@
-let mapleader=" "
+" let mapleader=" "
 
-nnoremap <SPACE> <Nop>
+" nnoremap <SPACE> <Nop>
 
 " better deleting and cutting
-nnoremap d "_d
-nnoremap D "_D
-xnoremap d "_d
-xnoremap D "_D
+" nnoremap d "_d
+" nnoremap D "_D
+" xnoremap d "_d
+" xnoremap D "_D
 
-nnoremap c "_c
-nnoremap C "_C
-xnoremap c "_c
-xnoremap C "_C
+" nnoremap c "_c
+" nnoremap C "_C
+" xnoremap c "_c
+" xnoremap C "_C
 
-nnoremap x d
-nnoremap X D
-nnoremap xx dd
+" nnoremap x d
+" nnoremap X D
+" nnoremap xx dd
 
-nnoremap <leader>p "+p
-nnoremap <leader>P "+P
-xnoremap <leader>p "+p
-xnoremap <leader>P "+P
+" nnoremap <leader>p "+p
+" nnoremap <leader>P "+P
+" xnoremap <leader>p "+p
+" xnoremap <leader>P "+P
 
-nnoremap <leader>y "+y
-nnoremap <leader>Y "+Y
-xnoremap <leader>y "+y
-xnoremap <leader>Y "+Y
+" nnoremap <leader>y "+y
+" nnoremap <leader>Y "+Y
+" xnoremap <leader>y "+y
+" xnoremap <leader>Y "+Y
 
 " replacing
-let g:mc = "y/\\V\<C-r>=escape(@\", '/')\<CR>\<CR>"
+" function! SetupCR()
+"   nnoremap <Enter> :nnoremap <lt>Enter> n@z<CR>q:<C-u>let @z=strpart(@z,0,strlen(@z)-1)<CR>n@z
+" endfunction
 
-nnoremap cn *``cgn
-nnoremap cN *``cgN
+" nnoremap cq :call SetupCR()<CR>*``qz
+" nnoremap cQ :call SetupCR()<CR>#``qz
 
-xnoremap <expr> <leader>cn g:mc . "``cgn"
-xnoremap <expr> <leader>cN g:mc . "``cgN"
-
-function! SetupCR()
-  nnoremap <Enter> :nnoremap <lt>Enter> n@z<CR>q:<C-u>let @z=strpart(@z,0,strlen(@z)-1)<CR>n@z
-endfunction
-
-nnoremap cq :call SetupCR()<CR>*``qz
-nnoremap cQ :call SetupCR()<CR>#``qz
-
-xnoremap <expr> <leader>cq ":\<C-u>call SetupCR()\<CR>" . "gv" . g:mc . "``qz"
-xnoremap <expr> <leader>cQ ":\<C-u>call SetupCR()\<CR>" . "gv" . substitute(g:mc, '/', '?', 'g') . "``qz"
+" xnoremap <expr> <leader>cq ":\<C-u>call SetupCR()\<CR>" . "gv" . g:mc . "``qz"
+" xnoremap <expr> <leader>cQ ":\<C-u>call SetupCR()\<CR>" . "gv" . substitute(g:mc, '/', '?', 'g') . "``qz"
 
 " search for selection
-nnoremap <silent> <leader>n :noh<CR>
+" nnoremap <silent> <leader>n :noh<CR>
 
 " stuff
-nnoremap <leader>V ^vg_
-nnoremap <M-s>a ggVG
+" nnoremap <M-s>a ggVG
 
 " tree
-nmap <silent> <M-s>b :NvimTreeToggle<CR>
-command TF :NvimTreeFindFile
-command TCB :NvimTreeClipboard
+" nmap <silent> <M-s>b :NvimTreeToggle<CR>
+" command TF :NvimTreeFindFile
+" command TCB :NvimTreeClipboard
 " command TCL :NvimTreeCollapseKeepBuffers
 
 " sourcing

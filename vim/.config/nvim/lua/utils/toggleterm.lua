@@ -8,7 +8,7 @@ M.convert_run_cmd = function(cmd)
     return cmd .. [[ || echo "runtime error"]]
 end
 
-M.exec_command = function(args)
+M.exec_cmd = function(args)
     vim.cmd("wall")
     if type(args) == "string" then
         require("toggleterm").exec(vim.fn.expandcmd(args), vim.v.count, nil, nil, nil, nil, nil)
