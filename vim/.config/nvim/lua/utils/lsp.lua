@@ -45,7 +45,7 @@ M.on_attach = function(client, bufnr)
     map('n', "<leader>lrn", function() vim.lsp.buf.rename() end, bufopts)
     map('n', "[d", function() vim.diagnostic.goto_prev() end, bufopts)
     map('n', "]d", function() vim.diagnostic.goto_next() end, bufopts)
-    map('n', "<A-F>", function() vim.lsp.buf.format({ async = true }) end, bufopts)
+    map('n', "<M-F>", function() vim.lsp.buf.format({ async = true }) end, bufopts)
 end
 
 return M

@@ -5,6 +5,8 @@ local convert_run_cmd = require("utils.toggleterm").convert_run_cmd
 
 local M = {}
 
+local opts = { buffer = true }
+
 M.set_build_command = function(cmd)
     map('n', "<leader>b", function()
         exec_cmd({
@@ -12,11 +14,11 @@ M.set_build_command = function(cmd)
             open = false
         })
         print("Building ...")
-    end, { buffer = true })
+    end, opts)
 
     map('n', "<leader>B", function()
         exec_cmd(cmd)
-    end, { buffer = true })
+    end, opts)
 end
 
 M.set_run_command = function(cmd)
@@ -25,11 +27,11 @@ M.set_run_command = function(cmd)
             cmd = convert_run_cmd(cmd),
             open = false
         })
-    end, { buffer = true })
+    end, opts)
 
     map('n', "<leader>R", function()
         exec_cmd(cmd)
-    end, { buffer = true })
+    end, opts)
 end
 
 return M

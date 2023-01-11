@@ -1,6 +1,6 @@
-local set_build_command = require("utils.terminal").set_build_command
+local term = require("utils.terminal")
 
-set_build_command("python setup.py build_ext --inplace")
+term.set_build_command("python setup.py build_ext --inplace")
 
 -- vim.api.nvim_create_autocmd("BufWritePost", {
 --     callback = function()

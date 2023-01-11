@@ -7,6 +7,8 @@ map('n', "<space>", "<nop>")
 
 map('n', "<M-s>a", "ggVG")
 
+map({'n', 'c'}, "<M-bs>", "<C-w>")
+
 -- better deleting/cutting
 map('n', 'd', '"_d')
 map('n', 'D', '"_D')
@@ -49,13 +51,13 @@ map({'n','x'}, "<leader>cn", "*Ncgn", { remap = true })
 map({'n','x'}, "<leader>cN", "*NcgN", { remap = true })
 
 local setup_cr = function()
-    map('n', "<CR>", ":nnoremap <lt>Enter> n@z<CR>q:<C-u>let @z=strpart(@z,0,strlen(@z)-1)<CR>n@z")
+    map('n', "<CR>", ":nnoremap <buffer> <lt>Enter> n@z<CR>q:<C-u>let @z=strpart(@z,0,strlen(@z)-1)<CR>n@z", { buffer = true })
 end
 
 map({'n', 'x'}, "<leader>cq", function ()
     setup_cr()
     vim.cmd(":norm *Nqz")
-end, { buffer = true })
+end)
 
 -- window movement
 map('n', "<C-h>", '<C-w>h')

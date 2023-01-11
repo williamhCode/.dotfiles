@@ -31,5 +31,6 @@ end
 
 create_fileswitch_map({ ".pyx", ".pxd" })
 create_fileswitch_map({ ".vert", ".frag" })
+-- create_fileswitch_map({ ".c", ".h" })
 
 -- vim.api.nvim_set_hl(0, 'LspSignatureActiveParameter', { fg = "#61afef", bg = "#3b3f4c", bold = false, italic = false })

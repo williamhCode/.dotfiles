@@ -1,6 +1,6 @@
-" let mapleader=" "
+let mapleader=" "
 
-" nnoremap <SPACE> <Nop>
+nnoremap <SPACE> <Nop>
 
 " better deleting and cutting
 " nnoremap d "_d
@@ -62,8 +62,6 @@ function ToggleWrap()
 endfunction
 
 nnoremap <leader>w :call ToggleWrap()<CR>
-
-inoremap <M-bs> <C-w>
 
 " window
 noremap <silent> <C-Left> :vertical resize +3<CR>
