@@ -46,7 +46,7 @@ alt - return : yabai -m window --grid 1:1:1:1:1:1
 # alt - s : yabai -m window --toggle split
 
 # balance size of windows
-# shift + alt - 0x18 : yabai -m space --balance
+shift + alt - 0x18 : yabai -m space --balance
 
 # move window and focus desktop
 shift + alt - 1 : yabai -m window --space 1; yabai -m space --focus 1
