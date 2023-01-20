@@ -3,11 +3,12 @@ local command = vim.api.nvim_create_user_command
 
 -- general ------------------------------------
 vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
 map('n', "<space>", "<nop>")
 
 map('n', "<M-s>a", "ggVG")
 
-map({'n', 'c'}, "<M-bs>", "<C-w>")
+map({'n', 'i', 'c'}, "<M-bs>", "<C-w>")
 
 -- better deleting/cutting
 map('n', 'd', '"_d')

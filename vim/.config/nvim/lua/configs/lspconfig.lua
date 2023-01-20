@@ -8,35 +8,19 @@ local function config(_config)
     }, _config or {})
 end
 
--- lsp setups
-require("lspconfig").pyright.setup(config({
-    settings = {
-        python = {
-            analysis = {
-                typeCheckingMode = "off",
-                autoImportCompletions = false,
+-- lsp setups ----------------------------------
+local setup = function (language_server, opts)
+    require("lspconfig")[language_server].setup(config(opts))
+end
 
-                autoSearchPaths = true,
-                useLibraryCodeForTypes = true,
-                diagnosticMode = "workspace",
-            }
-        }
-    },
-}))
-
-require("lspconfig").ccls.setup(config())
-
-require("lspconfig").vimls.setup(config())
-
+-- lua
 -- local runtime_path = vim.split(package.path, ";")
 -- table.insert(runtime_path, "lua/?.lua")
 -- table.insert(runtime_path, "lua/?/init.lua")
 
-require("neodev").setup({
-    -- add any options here, or leave empty to use the default settings
-})
+require("neodev").setup()
 
-require("lspconfig").sumneko_lua.setup(config({
+setup("sumneko_lua", {
     settings = {
         Lua = {
             runtime = {
@@ -59,17 +43,43 @@ require("lspconfig").sumneko_lua.setup(config({
             },
         },
     },
-}))
+})
 
+-- python
+setup("pyright", {
+    settings = {
+        python = {
+            analysis = {
+                typeCheckingMode = "off",
+                autoImportCompletions = false,
+
+                autoSearchPaths = true,
+                useLibraryCodeForTypes = true,
+                diagnosticMode = "workspace",
+            }
+        }
+    },
+})
+
+-- latex
+setup("texlab")
+
+-- c/c++
+-- setup("ccls")
+
+-- vim
+setup("vimls")
+
+
+-- unity omnisharp
 local pid = vim.fn.getpid()
 local omnisharp_bin = "/Users/williamhou/.local/share/nvim/mason/bin/omnisharp-mono"
-require("lspconfig").omnisharp_mono.setup(config({
+setup("omnisharp_mono", {
     cmd = { omnisharp_bin, "--languageserver", "--hostPID", tostring(pid) },
-}))
+})
 
--- require("lspconfig").omnisharp.setup(config())
 
--- UI
+-- UI ----------------------------------------------------------
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
     border = "rounded",
 })

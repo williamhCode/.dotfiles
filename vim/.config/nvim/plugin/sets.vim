@@ -33,6 +33,8 @@ set smartcase
 set nohlsearch
 set noshowmode
 
+set guicursor+=a:blinkon1
+
 set undofile
 set pumheight=12
 

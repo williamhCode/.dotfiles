@@ -20,9 +20,23 @@ require('nvim-tree').setup {
             list = {
                 { key = "l", action = "edit" },
                 { key = "<CR>", action = "cd" },
+                { key = "<BS>", action = "dir_up" },
                 { key = "h", action = "close_node" },
                 { key = "J", action = "next_sibling" },
                 { key = "K", action = "prev_sibling" },
+                -- {
+                --     key = "bd",
+                --     action = "bulk_delete",
+                --     action_cb = function()
+                --         local nodes = require("nvim-tree.api").marks.list()
+
+                --         for _, node in ipairs(nodes) do
+                --             print("deleting " .. (node.absolute_path or "???"))
+
+                --             -- safely delete the file  :help api.txt
+                --         end
+                --     end,
+                -- },
             },
         },
     },

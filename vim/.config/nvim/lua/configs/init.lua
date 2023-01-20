@@ -12,6 +12,7 @@ require('configs.luasnip')
 require('configs.Comment')
 -- require('configs.eyeliner')
 require('configs.toggleterm')
+require('configs.vimtex')
 
 -- don't move
 require('configs.themes')

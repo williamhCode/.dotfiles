@@ -39,7 +39,7 @@ Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'Issafalcon/lsp-overloads.nvim'
 
 " telescope stuff
-Plug 'nvim-telescope/telescope.nvim' , { 'tag': '0.1.0' }
+Plug 'nvim-telescope/telescope.nvim' , { 'branch': '0.1.x' }
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'nvim-telescope/telescope-ui-select.nvim'
 
@@ -57,9 +57,12 @@ Plug 'windwp/nvim-autopairs'
 Plug 'Vimjas/vim-python-pep8-indent'
 " Plug 'yioneko/nvim-yati'
 
+" latex
+Plug 'lervag/vimtex'
+
 " extras -----------------------------------------------
 " terminal
-Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
+Plug 'akinsho/toggleterm.nvim', {'tag' : '2.3.0'}
 
 " snippets
 Plug 'L3MON4D3/LuaSnip'

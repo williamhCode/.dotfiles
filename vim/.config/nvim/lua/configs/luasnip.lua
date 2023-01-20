@@ -17,7 +17,7 @@ local l = extras.l
 local rep = extras.rep
 local postfix = require("luasnip.extras.postfix").postfix
 
-local filename = function (_, snip)
+local filename = function(_, snip)
     return snip.env.TM_FILENAME:match("(.+)%..+$")
 end
 
@@ -37,10 +37,9 @@ ls.add_snippets("java", {
          * @version {}
          *
          */
-        ]], {
-            f(filename, {}),
-            f(filename, {}),
-            f(date, {}),
-        })
-    )
+         ]], {
+        f(filename, {}),
+        f(filename, {}),
+        f(date, {}),
+    }))
 })

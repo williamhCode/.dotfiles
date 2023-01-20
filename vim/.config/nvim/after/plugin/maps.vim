@@ -1,5 +1,5 @@
 let mapleader=" "
-
+let maplocalleader=" "
 nnoremap <SPACE> <Nop>
 
 " better deleting and cutting
