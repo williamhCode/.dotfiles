@@ -50,6 +50,8 @@ export LG_CONFIG_FILE="$HOME/.config/lazygit/config.yml"
 export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
 
+export DBUS_SESSION_BUS_ADDRESS="unix:path=$DBUS_LAUNCHD_SESSION_BUS_SOCKET" 
+
 # directories
 vrc="$HOME/.config/nvim"
 zrc="$HOME/.zshrc"
@@ -79,7 +81,7 @@ function ssh_alias()
 ssh_alias
 
 # tmux
-bindkey -s ^f "~/.local/scripts/tmux-sessionizer.sh\n"
+bindkey -s "^[sf" "~/.local/scripts/tmux-sessionizer.sh\n"
 alias tms="~/.local/scripts/tmux-sessionizer.sh \${PWD}"
 
 # local zshrc sourcing
@@ -98,5 +100,6 @@ if [[ -n $TMUX && $(tmux display-message -p '#{window_panes}') -le 1 ]]; then
     neofetch
 fi
 
+# prompt
 eval "$(starship init zsh)"
 

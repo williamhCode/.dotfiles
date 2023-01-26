@@ -65,7 +65,7 @@ setup("pyright", {
 setup("texlab")
 
 -- c/c++
--- setup("ccls")
+setup("clangd")
 
 -- vim
 setup("vimls")

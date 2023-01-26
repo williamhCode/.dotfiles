@@ -98,3 +98,11 @@ hi Search guibg=#3b3f4c guifg=None
 " hi LspSignatureActiveParameter guibg=None guifg=#61afef gui=bold
 hi LspSignatureActiveParameter guibg=#3b3f4c guifg=None
 
+" lua << EOF
+" local setup = function(name)
+"     return function()
+"         require("configs." .. name)
+"     end
+" end
+" EOF
+

@@ -1,16 +1,18 @@
+#!/usr/bin/env sh
+
 # https://github.com/koekeishiya/skhd
 
 # focus window
-# alt - h : yabai -m window --focus west
-# alt - j : yabai -m window --focus south
-# alt - k : yabai -m window --focus north
-# alt - l : yabai -m window --focus east
+alt - h : yabai -m window --focus west
+alt - j : yabai -m window --focus south
+alt - k : yabai -m window --focus north
+alt - l : yabai -m window --focus east
 
 # swap managed window
-# shift + alt - h : yabai -m window --swap west
-# shift + alt - j : yabai -m window --swap south
-# shift + alt - k : yabai -m window --swap north
-# shift + alt - l : yabai -m window --swap east
+shift + alt - h : yabai -m window --swap west
+shift + alt - j : yabai -m window --swap south
+shift + alt - k : yabai -m window --swap north
+shift + alt - l : yabai -m window --swap east
 
 # move managed window
 # shift + alt + ctrl - h : yabai -m window --warp west
@@ -34,6 +36,9 @@ alt - t : \
     # open /Users/williamhou/.dotfiles/bin/.local/scripts/yabai/send_yabai_notification.app --args "window is $message"; \
     yabai -m window --toggle float; \
     yabai -m window --grid 4:4:1:1:2:2
+
+alt + cmd - left : yabai -m window --grid 1:2:0:0:1:1
+alt + cmd - right : yabai -m window --grid 1:2:1:0:2:1
 
 # shift + alt - t : \
 #     title="$(yabai -m query --windows --window | jq '.title')"; \
@@ -89,10 +94,10 @@ shift + alt - p : yabai -m window --display prev; yabai -m display --focus prev
 # shift + alt - a : yabai -m window --resize top:0:20
 
 # stack/unstack
-# shift + alt - up : ~/.local/scripts/yabai/stack.sh north
-# shift + alt - down : ~/.local/scripts/yabai/stack.sh south
-# shift + alt - left : ~/.local/scripts/yabai/stack.sh west
-# shift + alt - right : ~/.local/scripts/yabai/stack.sh east
+shift + alt - up : ~/.local/scripts/yabai/stack.sh north
+shift + alt - down : ~/.local/scripts/yabai/stack.sh south
+shift + alt - left : ~/.local/scripts/yabai/stack.sh west
+shift + alt - right : ~/.local/scripts/yabai/stack.sh east
 
 # switch between all windows
 # alt - tab : yabai -m query --spaces --space \
@@ -108,16 +113,15 @@ shift + alt - p : yabai -m window --display prev; yabai -m display --focus prev
 #   | xargs -I{} yabai -m window --focus {}
 
 # reloading
-# ctrl + alt - r : \
-#     open /Users/williamhou/.dotfiles/bin/.local/scripts/yabai/send_yabai_notification.app --args "quick reloading"; \
-#     launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"; \
-#     osascript -e 'tell application id "tracesOf.Uebersicht" to refresh widget id "simple-bar-index-jsx"'
+ctrl + alt - r : \
+    open /Users/williamhou/.dotfiles/bin/.local/scripts/yabai/send_yabai_notification.app --args "quick reloading"; \
+    launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"; \
+    osascript -e 'tell application id "tracesOf.Uebersicht" to refresh widget id "simple-bar-index-jsx"'
 
 # meh - r : \
 #     open /Users/williamhou/.dotfiles/bin/.local/scripts/yabai/send_yabai_notification.app --args "restarting"; \
 #     brew services restart yabai; \
 #     brew services restart skhd; \
-#     osascript -e 'tell application id "tracesOf.Uebersicht" to refresh widget id "simple-bar-index-jsx"'
 
 # shift + cmd - r : \
 #     brew services restart spacebar;

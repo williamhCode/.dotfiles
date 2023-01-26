@@ -51,15 +51,15 @@ cmp.setup({
         ['<C-u>'] = cmp.mapping.scroll_docs(-4),
         ['<C-d>'] = cmp.mapping.scroll_docs(4),
         -- ['<C-q>'] = cmp.mapping.complete(),
-        ['<C-c>'] = cmp.mapping.abort(),
+        -- ['<C-c>'] = cmp.mapping.abort(),
         ['<C-e>'] = cmp.mapping.confirm({ select = true }),
 
         -- super tabbing
         ["<Tab>"] = cmp.mapping(function(fallback)
             if luasnip.expand_or_jumpable() then
                 luasnip.expand_or_jump()
-            -- elseif cmp.visible() then
-            --     vim.api.nvim_feedkeys(key("<Tab>"), "n", false)
+                -- elseif cmp.visible() then
+                --     vim.api.nvim_feedkeys(key("<Tab>"), "n", false)
             else
                 fallback()
             end
@@ -93,7 +93,6 @@ cmp.setup({
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
         { name = 'buffer' },
-        -- { name = 'nvim_lsp_signature_help'}
     })
 })
 
@@ -124,4 +123,3 @@ cmp.setup.cmdline(':', {
 
 -- luasnip
 require("luasnip.loaders.from_vscode").lazy_load()
-
