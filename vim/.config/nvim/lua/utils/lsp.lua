@@ -6,7 +6,7 @@ M.on_attach = function(client, bufnr)
     if client.server_capabilities.signatureHelpProvider then
         require('lsp-overloads').setup(client, {
             ui = {
-                border = "rounded",
+                -- border = "rounded",
                 close_events = { "CursorMoved", "CursorMovedI", "InsertCharPre" },
             },
             keymaps = {
@@ -47,7 +47,7 @@ M.on_attach = function(client, bufnr)
     end
     map('n', "[d", function() vim.diagnostic.goto_prev() end, opts)
     map('n', "]d", function() vim.diagnostic.goto_next() end, opts)
-    map('n', "<M-F>", function() vim.lsp.buf.format({ async = true }) end, opts)
+    map({ 'n', 'v' }, "<M-F>", function() vim.lsp.buf.format({ async = true }) end, opts)
 end
 
 return M

@@ -70,13 +70,15 @@ setup("clangd")
 -- vim
 setup("vimls")
 
-
 -- unity omnisharp
 local pid = vim.fn.getpid()
 local omnisharp_bin = "/Users/williamhou/.local/share/nvim/mason/bin/omnisharp-mono"
 setup("omnisharp_mono", {
     cmd = { omnisharp_bin, "--languageserver", "--hostPID", tostring(pid) },
 })
+
+-- bash
+setup("bashls")
 
 
 -- UI ----------------------------------------------------------
