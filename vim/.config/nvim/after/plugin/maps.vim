@@ -101,15 +101,15 @@ tnoremap <Esc> <C-\><C-n>
 
 " centered jumping
 function! ScrollUp()
-    set scrolloff=0
+    setlocal scrolloff=0
     execute 'normal! ' . "20\<C-u>"
-    set scrolloff=8
+    setlocal scrolloff=8
 endfunction
 
 function! ScrollDown()
-    set scrolloff=0
+    setlocal scrolloff=0
     execute 'normal! ' . "20\<C-d>"
-    set scrolloff=8
+    setlocal scrolloff=8
 endfunction
 
 nnoremap <silent> <C-u> :call ScrollUp()<CR>zz

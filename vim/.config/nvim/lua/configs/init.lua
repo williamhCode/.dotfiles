@@ -13,6 +13,7 @@ require('configs.Comment')
 -- require('configs.eyeliner')
 require('configs.toggleterm')
 require('configs.vimtex')
+require('configs.fidget')
 
 -- don't move
 require('configs.themes')

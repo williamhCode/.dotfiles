@@ -83,8 +83,8 @@ Plug 'github/copilot.vim'
 " tagbar
 Plug 'preservim/tagbar'
 
-" better f/t indicators
-" Plug 'jinh0/eyeliner.nvim'
+" lsp progress
+Plug 'j-hui/fidget.nvim'
 
 call plug#end()
 

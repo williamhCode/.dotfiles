@@ -71,11 +71,12 @@ setup("clangd")
 setup("vimls")
 
 -- unity omnisharp
-local pid = vim.fn.getpid()
-local omnisharp_bin = "/Users/williamhou/.local/share/nvim/mason/bin/omnisharp-mono"
-setup("omnisharp_mono", {
-    cmd = { omnisharp_bin, "--languageserver", "--hostPID", tostring(pid) },
-})
+-- local pid = vim.fn.getpid()
+-- local omnisharp_bin = "/Users/williamhou/.local/share/nvim/mason/bin/omnisharp-mono"
+-- setup("omnisharp_mono", {
+--     cmd = { omnisharp_bin, "--languageserver", "--hostPID", tostring(pid) },
+-- })
+setup("omnisharp_mono")
 
 -- bash
 setup("bashls")
