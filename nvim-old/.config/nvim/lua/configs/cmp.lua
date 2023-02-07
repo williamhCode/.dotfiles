@@ -43,6 +43,7 @@ cmp.setup({
             require('luasnip').lsp_expand(args.body)
         end,
     },
+
     window = {
         completion = cmp.config.window.bordered(),
         documentation = cmp.config.window.bordered(),
@@ -50,8 +51,7 @@ cmp.setup({
     mapping = cmp.mapping.preset.insert({
         ['<C-u>'] = cmp.mapping.scroll_docs(-4),
         ['<C-d>'] = cmp.mapping.scroll_docs(4),
-        -- ['<C-q>'] = cmp.mapping.complete(),
-        -- ['<C-c>'] = cmp.mapping.abort(),
+
         ['<C-e>'] = cmp.mapping.confirm({ select = true }),
 
         -- super tabbing

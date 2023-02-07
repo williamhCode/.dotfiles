@@ -58,12 +58,12 @@ zrc="$HOME/.zshrc"
 pco="/Users/williamhou/Documents/Coding/Personal-coding"
 co="/Users/williamhou/Documents/Coding/"
 alias cs="cd /Users/williamhou/Documents/Coding/CS180"
-alias v="nvim ."
+alias v="nvim"
 alias a="tmux attach"
 
 alias ibrew="arch -x86_64 /usr/local/bin/brew"
 
-export TERM="xterm-256color"
+# export TERM="xterm-256color"
 
 # vim
 export VISUAL="/opt/homebrew/bin/nvim"
@@ -96,7 +96,7 @@ load-local-conf
 
 add-zsh-hook chpwd load-local-conf
 
-if [[ -n $TMUX && $(tmux display-message -p '#{window_panes}') -le 1 ]]; then
+if [[ -n $TMUX && $(tmux display-message -p '#{window_panes}') -le 1 && -z $VIMRUNTIME ]]; then
     neofetch
 fi
 
