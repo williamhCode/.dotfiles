@@ -2,17 +2,33 @@
 
 # https://github.com/koekeishiya/skhd
 
+
+# register mode "window"
+:: window
+alt - w ; window
+window < alt - w ; default
+
 # focus window
-alt - h : yabai -m window --focus west
-alt - j : yabai -m window --focus south
-alt - k : yabai -m window --focus north
-alt - l : yabai -m window --focus east
+window < h : skhd -k "alt - w"; yabai -m window --focus west
+window < j : skhd -k "alt - w"; yabai -m window --focus south
+window < k : skhd -k "alt - w"; yabai -m window --focus north
+window < l : skhd -k "alt - w"; yabai -m window --focus east
+
+window < alt - h : skhd -k "alt - w"; yabai -m window --focus west
+window < alt - j : skhd -k "alt - w"; yabai -m window --focus south
+window < alt - k : skhd -k "alt - w"; yabai -m window --focus north
+window < alt - l : skhd -k "alt - w"; yabai -m window --focus east
 
 # swap managed window
-shift + alt - h : yabai -m window --swap west
-shift + alt - j : yabai -m window --swap south
-shift + alt - k : yabai -m window --swap north
-shift + alt - l : yabai -m window --swap east
+window < shift - h : skhd -k "alt - w"; yabai -m window --swap west
+window < shift - j : skhd -k "alt - w"; yabai -m window --swap south
+window < shift - k : skhd -k "alt - w"; yabai -m window --swap north
+window < shift - l : skhd -k "alt - w"; yabai -m window --swap east
+
+window < alt + shift - h : skhd -k "alt - w"; yabai -m window --swap west
+window < alt + shift - j : skhd -k "alt - w"; yabai -m window --swap south
+window < alt + shift - k : skhd -k "alt - w"; yabai -m window --swap north
+window < alt + shift - l : skhd -k "alt - w"; yabai -m window --swap east
 
 # move managed window
 # shift + alt + ctrl - h : yabai -m window --warp west
