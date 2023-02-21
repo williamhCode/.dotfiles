@@ -63,8 +63,6 @@ alias a="tmux attach"
 
 alias ibrew="arch -x86_64 /usr/local/bin/brew"
 
-# export TERM="xterm-256color"
-
 # vim
 export VISUAL="/opt/homebrew/bin/nvim"
 export EDITOR="$VISUAL"
@@ -73,16 +71,15 @@ set -o emacs
 # ssh
 function ssh_alias()
 {
-  export TERM="xterm-256color"
   local pu_server="hou169@data.cs.purdue.edu"
   local pu_ssh_password=$(security find-generic-password -a "$USER" -s "pu_ssh_password" -w)
-  alias ssh_pu="~/.local/scripts/exp.sh $pu_ssh_password ssh $pu_server"
-  alias sftp_pu="~/.local/scripts/exp.sh $pu_ssh_password sftp $pu_server"
+  alias pu_ssh="~/.local/scripts/exp.sh $pu_ssh_password ssh $pu_server"
+  alias pu_sftp="~/.local/scripts/exp.sh $pu_ssh_password sftp $pu_server"
 }
 ssh_alias
 
 # tmux
-bindkey -s "^[sf" "~/.local/scripts/tmux-sessionizer.sh\n"
+alias f="~/.local/scripts/tmux-sessionizer.sh"
 alias tms="~/.local/scripts/tmux-sessionizer.sh \${PWD}"
 
 # local zshrc sourcing

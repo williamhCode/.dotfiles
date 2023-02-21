@@ -18,7 +18,6 @@ spacebar -m config space_icon_color 0xff60afff
 # center
 spacebar -m config title on
 # spacebar -m config center_shell_command "osascript -e 'tell application \"System Events\"' -e 'set frontApp to name of first application process whose frontmost is true' -e 'end tell'"
-# spacebar -m config center_shell_command "pwd"
 # spacebar -m config center_shell on
 
 # power
