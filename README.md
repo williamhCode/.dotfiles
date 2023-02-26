@@ -5,9 +5,9 @@ Terminal multiplexer: [tmux](https://github.com/tmux/tmux/wiki)
 Shell: zsh  
 Editor: [neovim](https://github.com/neovim/neovim)  
 Window manager: [yabai](https://github.com/koekeishiya/yabai)  
-Bar: [spacebar](https://github.com/cmacrae/spacebar)
+Bar: [spacebar](https://github.com/cmacrae/spacebar)  
 Theme: onedarkpro
 
-<img width="1680" alt="macOS Rice" src="https://user-images.githubusercontent.com/83525937/202085422-3e499b01-9cc9-4a6e-b1bf-42e7dae53978.png">
+<img width="2560" alt="image" src="https://user-images.githubusercontent.com/83525937/221441736-80f14918-6e2c-45eb-ab33-73259c238199.png">
 
 Managed with [GNU Stow](https://www.gnu.org/software/stow/)
