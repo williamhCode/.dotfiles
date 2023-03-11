@@ -1,5 +1,10 @@
 gui:
   scrollHeight: 4 # how many lines you scroll by
+  theme:
+    selectedLineBgColor:
+      - '#414858'
+    selectedRangeBgColor:
+      - '#414858'
 keybinding:
   universal:
     prevPage: '<c-b>' # go to next page in list

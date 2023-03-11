@@ -60,8 +60,8 @@ window < s : yabai -m window --toggle split
 window < alt - s : yabai -m window --toggle split; skhd -k "alt - w"
 
 # balance size of windows
-window < shift - 0x18 : yabai -m space --balance
-window < shift + alt - 0x18 : yabai -m space --balance; skhd -k "alt - w"
+window < 0x18 : yabai -m space --balance
+window < alt - 0x18 : yabai -m space --balance; skhd -k "alt - w"
 
 # increase window size
 window < a : yabai -m window --resize left:-20:0
@@ -76,10 +76,15 @@ window < shift - w : yabai -m window --resize top:0:20
 window < shift - d : yabai -m window --resize right:-20:0
 
 # stack/unstack
-window < up : ~/.local/scripts/yabai/stack.sh north; skhd -k "alt - w"
-window < down : ~/.local/scripts/yabai/stack.sh south; skhd -k "alt - w"
-window < left : ~/.local/scripts/yabai/stack.sh west; skhd -k "alt - w"
-window < right : ~/.local/scripts/yabai/stack.sh east; skhd -k "alt - w"
+window < up : ~/.local/scripts/yabai/stack.sh north; skhd -k
+window < down : ~/.local/scripts/yabai/stack.sh south; skhd -k
+window < left : ~/.local/scripts/yabai/stack.sh west; skhd -k
+window < right : ~/.local/scripts/yabai/stack.sh east; skhd -k
+
+window < alt - up : ~/.local/scripts/yabai/stack.sh north; skhd -k "alt - w"
+window < alt - down : ~/.local/scripts/yabai/stack.sh south; skhd -k "alt - w"
+window < alt - left : ~/.local/scripts/yabai/stack.sh west; skhd -k "alt - w"
+window < alt - right : ~/.local/scripts/yabai/stack.sh east; skhd -k "alt - w"
 
 # move window when in float mode
 alt + cmd - left : yabai -m window --grid 1:2:0:0:1:1
