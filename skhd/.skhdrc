@@ -140,6 +140,9 @@ alt - 9 : yabai -m space --focus 9
 alt - 0x21 : yabai -m space --focus prev
 alt - 0x1E : yabai -m space --focus next
 
+# shift + alt - 0x21 : yabai -m space --focus prev
+# shift + alt - 0x1E : yabai -m space --focus next
+
 shift + alt - 0x21 : yabai -m display --focus prev
 shift + alt - 0x1E : yabai -m display --focus next
 
