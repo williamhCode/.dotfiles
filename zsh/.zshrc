@@ -31,6 +31,9 @@ unset __conda_setup
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh # fzf keybinds
 
+fpath+=~/.zfunc
+# autoload -Uz compinit && compinit
+
 # autocomplete
 autoload -U compinit && compinit -u
 
@@ -60,6 +63,9 @@ co="/Users/williamhou/Documents/Coding/"
 alias cs="cd /Users/williamhou/Documents/Coding/CS180"
 alias v="nvim"
 alias a="tmux attach"
+
+alias python="python3"
+alias pip="pip3"
 
 alias ibrew="arch -x86_64 /usr/local/bin/brew"
 

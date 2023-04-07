@@ -1,6 +1,10 @@
 gui:
   scrollHeight: 4 # how many lines you scroll by
   theme:
+    # selectedLineBgColor:
+    #   - gray
+    # selectedRangeBgColor:
+    #   - gray
     selectedLineBgColor:
       - '#414858'
     selectedRangeBgColor:

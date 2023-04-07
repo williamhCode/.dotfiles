@@ -19,7 +19,13 @@ disabled = true
 [java]
 disabled = true
 
+[cmake]
+disabled = true
+
 [lua]
+disabled = true
+
+[c]
 disabled = true
 
 [git_branch]
