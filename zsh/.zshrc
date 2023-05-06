@@ -29,23 +29,32 @@ unset __conda_setup
 
 # plugins/tools ----------------------- #
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh # fzf keybinds
 
-fpath+=~/.zfunc
-# autoload -Uz compinit && compinit
+# fzf keybinds
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# fpath+=~/.zfunc
 
 # autocomplete
-autoload -U compinit && compinit -u
+autoload -Uz compinit && compinit
 
 # settings
 unsetopt autocd
+setopt hist_ignore_all_dups
+
+# add color to ls
+export CLICOLOR=1
+
+# increase history size
+export HISTSIZE=20000
+export SAVEHIST=20000
 
 # prevent duplicate path in tmux
 if [[ -z $TMUX ]]; then
   export PATH="$PATH:/Applications/MATLAB_R2021a.app/bin"
   export PATH="$PATH:/Users/williamhou/.dotnet/tools"
-  export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
   export PATH="$PATH:/Users/williamhou/.local/scripts"
+  export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 fi
 
 export LG_CONFIG_FILE="$HOME/.config/lazygit/config.yml"
@@ -67,8 +76,6 @@ alias a="tmux attach"
 alias python="python3"
 alias pip="pip3"
 
-alias ibrew="arch -x86_64 /usr/local/bin/brew"
-
 # vim
 export VISUAL="/opt/homebrew/bin/nvim"
 export EDITOR="$VISUAL"
@@ -84,11 +91,11 @@ function ssh_alias()
 }
 ssh_alias
 
-# tmux
+# # tmux
 alias f="~/.local/scripts/tmux-sessionizer.sh"
 alias tms="~/.local/scripts/tmux-sessionizer.sh \${PWD}"
 
-# local zshrc sourcing
+# # local zshrc sourcing
 autoload -U add-zsh-hook
 
 load-local-conf() {
@@ -100,10 +107,17 @@ load-local-conf
 
 add-zsh-hook chpwd load-local-conf
 
-if [[ -n $TMUX && $(tmux display-message -p '#{window_panes}') -le 1 && -z $VIMRUNTIME ]]; then
-  neofetch
-fi
+# if [[ -n $TMUX && $(tmux display-message -p '#{window_panes}') -le 1 && -z $VIMRUNTIME ]]; then
+#   neofetch
+# fi
 
-# prompt
+# personal config
+# setopt PROMPT_SUBST
+
+# parse_git_branch() {
+#      git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+# }
+
+# export PROMPT='%B%F{cyan}%~%f%F{magenta}$(parse_git_branch) %f%b%F{green}❯%f '
+
 eval "$(starship init zsh)"
-

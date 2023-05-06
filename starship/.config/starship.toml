@@ -1,3 +1,18 @@
+format = """
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+$hg_branch\
+$python\
+$conda\
+$jobs\
+$battery\
+$character"""
 add_newline = false
 
 [line_break]
@@ -14,19 +29,8 @@ ignore_base = false
 symbol = " "
 
 [python]
-disabled = true
-
-[java]
-disabled = true
-
-[cmake]
-disabled = true
-
-[lua]
-disabled = true
-
-[c]
-disabled = true
+disabled = false
+format = '[(\($virtualenv\) )]($style)'
 
 [git_branch]
 symbol = " "

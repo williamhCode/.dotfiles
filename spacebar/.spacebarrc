@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 # general
-spacebar -m config text_font "Roboto Mono:Regular:13.0"
+spacebar -m config text_font "SF Mono:Regular:13.0"
 spacebar -m config icon_font "Hack Nerd Font:Regular:13.0"
 
 spacebar -m config display all
@@ -11,7 +11,7 @@ spacebar -m config background_color 0xff1b1e26
 
 # space
 # spacebar -m config space_icon_strip I II III IV V VI VII VIII IX X
-spacebar -m config space_icon_strip      VI VII VIII IX X
+spacebar -m config space_icon_strip     V VI VII VIII IX X
 spacebar -m config spaces_for_all_displays off
 spacebar -m config space_icon_color 0xff60afff
 
