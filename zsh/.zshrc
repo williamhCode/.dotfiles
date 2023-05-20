@@ -54,7 +54,9 @@ if [[ -z $TMUX ]]; then
   export PATH="$PATH:/Applications/MATLAB_R2021a.app/bin"
   export PATH="$PATH:/Users/williamhou/.dotnet/tools"
   export PATH="$PATH:/Users/williamhou/.local/scripts"
+  export PATH="$HOME/.cargo/bin:$PATH"
   export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+  export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
 fi
 
 export LG_CONFIG_FILE="$HOME/.config/lazygit/config.yml"
@@ -70,7 +72,7 @@ zrc="$HOME/.zshrc"
 pco="/Users/williamhou/Documents/Coding/Personal-coding"
 co="/Users/williamhou/Documents/Coding/"
 alias cs="cd /Users/williamhou/Documents/Coding/CS180"
-alias v="nvim"
+alias vi="nvim"
 alias a="tmux attach"
 
 alias python="python3"
