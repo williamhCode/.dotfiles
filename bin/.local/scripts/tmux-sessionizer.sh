@@ -8,6 +8,7 @@ else
         echo ~/;
         echo ~/.dotfiles;
         echo ~/.config/nvim; 
+        echo ~/Documents/Coding/Notes; 
         find ~/Documents/Coding -mindepth 2 -maxdepth 2 -type d; 
     } | fzf)
 fi
