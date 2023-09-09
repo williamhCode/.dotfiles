@@ -72,7 +72,7 @@ zrc="$HOME/.zshrc"
 pco="/Users/williamhou/Documents/Coding/Personal-coding"
 co="/Users/williamhou/Documents/Coding/"
 alias cs="cd /Users/williamhou/Documents/Coding/CS180"
-alias vi="nvim"
+alias vi="env TERM=wezterm nvim"
 alias a="tmux attach"
 
 alias python="python3"
@@ -87,9 +87,11 @@ set -o emacs
 function ssh_alias()
 {
   local pu_server="hou169@data.cs.purdue.edu"
-  local pu_ssh_password=$(security find-generic-password -a "$USER" -s "pu_ssh_password" -w)
-  alias pu_ssh="~/.local/scripts/exp.sh $pu_ssh_password ssh $pu_server"
-  alias pu_sftp="~/.local/scripts/exp.sh $pu_ssh_password sftp $pu_server"
+  # local pu_ssh_password=$(security find-generic-password -a "$USER" -s "pu_ssh_password" -w)",push"
+  # alias pu_ssh="~/.local/scripts/exp.sh $pu_ssh_password ssh $pu_server"
+  # alias pu_sftp="~/.local/scripts/exp.sh $pu_ssh_password sftp $pu_server"
+  alias pu_ssh="ssh $pu_server"
+  alias pu_sftp="sftp $pu_server"
 }
 ssh_alias
 

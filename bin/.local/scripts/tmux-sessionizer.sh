@@ -8,7 +8,7 @@ else
         echo ~/;
         echo ~/.dotfiles;
         echo ~/.config/nvim; 
-        echo ~/Documents/Coding/Notes; 
+        echo ~/Documents/Notes;
         find ~/Documents/Coding -mindepth 2 -maxdepth 2 -type d; 
     } | fzf)
 fi
@@ -30,4 +30,3 @@ fi
 
 # if tmux is attached, switch to session
 tmux switch-client -t "$selected_name"
-

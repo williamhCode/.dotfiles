@@ -1,5 +1,6 @@
 local wezterm = require "wezterm"
 local act = wezterm.action
+local colors = require "colors"
 
 local config = {}
 
@@ -8,70 +9,76 @@ if wezterm.config_builder then
 end
 
 config.front_end = "WebGpu"
+config.debug_key_events = true
+
+config.default_workspace = "williamhou"
+
+config.font = wezterm.font_with_fallback {
+  "SF Mono",
+  "Hack Nerd Font",
+}
+config.font_size = 15.0
+config.line_height = 1.35
+
+-- ui
+config.window_background_opacity = 0.96
+
+config.window_padding = {
+  bottom = 0,
+}
+
+wezterm.on("update-right-status", function(window, pane)
+  window:set_right_status(
+    wezterm.format {
+      { Background = { Color = colors.dark_bg } },
+      { Foreground = { Color = colors.fg } },
+      { Text = window:active_workspace() .. " " },
+    }
+  )
+end)
 
 config.window_decorations = "RESIZE"
 config.window_frame = {
-  font = wezterm.font { family = "Roboto", weight = "Bold" },
-  font_size = 13.0,
-  active_titlebar_bg = "#22252b",
-  inactive_titlebar_bg = "#22252b",
+  font = wezterm.font { family = "SF Mono", weight = "Bold" },
+  font_size = 14.0,
+  active_titlebar_bg = colors.dark_bg,
+  inactive_titlebar_bg = colors.dark_bg,
 }
-
-config.font = wezterm.font "SF Mono"
-config.font_size = 15.0
-config.line_height = 1.35
+config.hide_tab_bar_if_only_one_tab = true
 
 config.bold_brightens_ansi_colors = "No"
 config.colors = {
   tab_bar = {
     active_tab = {
-      bg_color = "#282c34",
-      fg_color = "#abb2bf",
+      bg_color = colors.bg,
+      fg_color = colors.fg,
     },
     inactive_tab = {
-      bg_color = "#22252b",
-      fg_color = "#7f848e",
+      bg_color = colors.dark_bg,
+      fg_color = colors.comment,
     },
     inactive_tab_hover = {
-      bg_color = "#414858",
-      fg_color = "#7f848e",
+      bg_color = colors.selection,
+      fg_color = colors.comment,
       italic = true,
     },
     new_tab = {
-      bg_color = "#282c34",
-      fg_color = "#7f848e",
+      bg_color = colors.bg,
+      fg_color = colors.comment,
     },
     new_tab_hover = {
-      bg_color = "#414858",
-      fg_color = "#7f848e",
+      bg_color = colors.selection,
+      fg_color = colors.comment,
       italic = true,
     },
   },
 
-  ansi = {
-    "#282c34",
-    "#e06c75",
-    "#98c379",
-    "#e5c07b",
-    "#61afef",
-    "#c678dd",
-    "#56b6c2",
-    "#abb2bf",
-  },
-  brights = {
-    "#5c6370",
-    "#e9969d",
-    "#b3d39c",
-    "#edd4a6",
-    "#8fc6f4",
-    "#d7a1e7",
-    "#7bc6d0",
-    "#c8cdd5",
-  },
-  background = "#282c34",
-  foreground = "#abb2bf",
-  selection_bg = "#c678dd",
-  selection_fg = "#abb2bf",
+  ansi = colors.ansi,
+  brights = colors.brights,
+  background = colors.bg,
+  foreground = colors.fg,
+  selection_bg = colors.selection,
+  selection_fg = colors.fg
 }
 
 -- key bindings
@@ -83,9 +90,13 @@ config.keys = {
   { key = "q", mods = "SUPER", action = act.QuitApplication },
 
   -- shell
-  { key = "t", mods = "SUPER", action = act.SpawnTab "CurrentPaneDomain" },
+  -- { key = "t", mods = "SUPER", action = act.SpawnTab "CurrentPaneDomain" },
+  { key = "t", mods = "SUPER", action = act.SendString "\x01c" },
   { key = "n", mods = "SUPER", action = act.SpawnWindow },
-  { key = "w", mods = "SUPER", action = act.CloseCurrentTab { confirm = true } },
+  -- { key = "w", mods = "SUPER", action = act.CloseCurrentTab { confirm = false } },
+  { key = "w", mods = "SUPER", action = act.SendString "\x01k" },
+  { key = "w", mods = "SHIFT|SUPER", action = act.SendString "\x01K" },
+
 
   -- edit
   { key = "c", mods = "SUPER", action = act.CopyTo "Clipboard" },
@@ -112,8 +123,10 @@ config.keys = {
   { key = "7", mods = "SUPER", action = act.ActivateTab(6) },
   { key = "8", mods = "SUPER", action = act.ActivateTab(7) },
   { key = "9", mods = "SUPER", action = act.ActivateTab(-1) },
-  { key = "{", mods = "SUPER", action = act.ActivateTabRelative(-1) },
-  { key = "}", mods = "SUPER", action = act.ActivateTabRelative(1) },
+  -- { key = "{", mods = "SUPER", action = act.ActivateTabRelative(-1) },
+  { key = "{", mods = "SHIFT|SUPER", action = act.SendString "\x01p" },
+  -- { key = "}", mods = "SUPER", action = act.ActivateTabRelative(1) },
+  { key = "}", mods = "SHIFT|SUPER", action = act.SendString "\x01n" },
   { key = "z", mods = "SHIFT|CTRL", action = act.TogglePaneZoomState },
 
   -- other
@@ -125,6 +138,60 @@ config.keys = {
   { key = "[", mods = "SUPER", action = act.SendString "\x1bs[" },
   { key = "]", mods = "SUPER", action = act.SendString "\x1bs]" },
   { key = "a", mods = "SUPER", action = act.SendString "\x1bsa" },
+
+  -- tmux
+  { key = "r", mods = "SUPER", action = act.SendString "\x01s" },
+  { key = "l", mods = "SUPER", action = act.SendString "\x01L" },
+
+  -- remap ctrl + [ to esc
+  -- { key = "[", mods = "CTRL", action = act.SendKey { key = "Escape" } },
+
+  -- {
+  --   key = "r",
+  --   mods = "SUPER",
+  --   action = act.ShowLauncherArgs {
+  --     flags = "WORKSPACES",
+  --   },
+  -- },
+
+  -- {
+  --   key = "r",
+  --   mods = "SHIFT|SUPER",
+  --   action = wezterm.action_callback(function(window, pane)
+  --     local cmd = [[
+  --     echo "$({
+  --       echo $HOME/.dotfiles;
+  --       echo $HOME/.config/nvim;
+  --       echo $HOME/Documents/Notes;
+  --       find $HOME/Documents/Coding -mindepth 2 -maxdepth 2 -type d;
+  --     })"
+  --     ]]
+  --     local file = io.popen(cmd)
+  --     local output = file:read("*a")
+  --     file:close()
+
+  --     local choices = {}
+  --     for directory in string.gmatch(output, "([^\n]+)") do
+  --       table.insert(choices, { label = directory })
+  --     end
+
+  --     window:perform_action(
+  --       act.InputSelector {
+  --         title = "Workspaces",
+  --         choices = choices,
+  --         action = wezterm.action_callback(function(window, pane, id, label)
+  --           if label then
+  --             window:perform_action(act.SwitchToWorkspace {
+  --               name = label:match("([^/]+)$"),
+  --               spawn = {
+  --                 cwd = label,
+  --               }
+  --             }, pane)
+  --           end
+  --         end),
+  --       }, pane)
+  --   end),
+  -- },
 }
 
 config.key_tables = {
