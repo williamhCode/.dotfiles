@@ -6,7 +6,7 @@ Shell: zsh
 Editor: [neovim](https://github.com/neovim/neovim)  
 Window manager: [yabai](https://github.com/koekeishiya/yabai)  
 Bar: [spacebar](https://github.com/cmacrae/spacebar)  
-Theme: onedarkpro  
+Theme: One Dark Pro  
 Managed with [GNU Stow](https://www.gnu.org/software/stow/)
 
 
