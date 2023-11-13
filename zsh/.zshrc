@@ -3,13 +3,13 @@
 
 __conda_setup="$('/opt/homebrew/Caskroom/miniforge/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
-  eval "$__conda_setup"
+    eval "$__conda_setup"
 else
-  if [ -f "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/conda.sh" ]; then
-    . "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/conda.sh"
-  else
-    export PATH="/opt/homebrew/Caskroom/miniforge/base/bin:$PATH"
-  fi
+    if [ -f "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/conda.sh" ]; then
+        . "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/conda.sh"
+    else
+        export PATH="/opt/homebrew/Caskroom/miniforge/base/bin:$PATH"
+    fi
 fi
 unset __conda_setup
 
@@ -51,12 +51,13 @@ export SAVEHIST=20000
 
 # prevent duplicate path in tmux
 if [[ -z $TMUX ]]; then
-  export PATH="$PATH:/Applications/MATLAB_R2021a.app/bin"
-  export PATH="$PATH:/Users/williamhou/.dotnet/tools"
-  export PATH="$PATH:/Users/williamhou/.local/scripts"
-  export PATH="$HOME/.cargo/bin:$PATH"
-  export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
-  export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
+    export PATH="$PATH:/Applications/MATLAB_R2021a.app/bin"
+    export PATH="$PATH:/Users/williamhou/.dotnet/tools"
+    export PATH="$PATH:/Users/williamhou/.local/scripts"
+    export PATH="$HOME/.cargo/bin:$PATH"
+    export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+    export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
+    export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 fi
 
 export LG_CONFIG_FILE="$HOME/.config/lazygit/config.yml"
@@ -86,25 +87,31 @@ set -o emacs
 # ssh
 function ssh_alias()
 {
-  local pu_server="hou169@data.cs.purdue.edu"
-  # local pu_ssh_password=$(security find-generic-password -a "$USER" -s "pu_ssh_password" -w)",push"
-  # alias pu_ssh="~/.local/scripts/exp.sh $pu_ssh_password ssh $pu_server"
-  # alias pu_sftp="~/.local/scripts/exp.sh $pu_ssh_password sftp $pu_server"
-  alias pu_ssh="ssh $pu_server"
-  alias pu_sftp="sftp $pu_server"
+    local pu_server="hou169@data.cs.purdue.edu"
+    # local pu_ssh_password=$(security find-generic-password -a "$USER" -s "pu_ssh_password" -w)",push"
+    # alias pu_ssh="~/.local/scripts/exp.sh $pu_ssh_password ssh $pu_server"
+    # alias pu_sftp="~/.local/scripts/exp.sh $pu_ssh_password sftp $pu_server"
+    alias pu_ssh="ssh $pu_server"
+    alias pu_sftp="sftp $pu_server"
 }
 ssh_alias
 
 # # tmux
 alias f="~/.local/scripts/tmux-sessionizer.sh"
-alias tms="~/.local/scripts/tmux-sessionizer.sh \${PWD}"
+function tms() {
+    if [[ -n $1 ]] then
+        ~/.local/scripts/tmux-sessionizer.sh $1
+    else
+        ~/.local/scripts/tmux-sessionizer.sh ${PWD}
+    fi
+}
 
 # # local zshrc sourcing
 autoload -U add-zsh-hook
 
 load-local-conf() {
 if [[ -f .zshrc && $HOME != $PWD ]]; then
-  source .zshrc
+    source .zshrc
 fi
 }
 load-local-conf

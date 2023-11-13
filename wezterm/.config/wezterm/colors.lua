@@ -1,4 +1,4 @@
-local colors = {
+local onedark = {
   bg = "#282c34",
   fg = "#abb2bf",
   red = "#e06c75",
@@ -40,4 +40,4 @@ local colors = {
   },
 }
 
-return colors
+return onedark

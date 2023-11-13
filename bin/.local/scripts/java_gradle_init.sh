@@ -9,19 +9,28 @@ mkfile() {
 }
 
 # create folders
-mkfile src/main/java "$1.java"
-mkfile src/test/java "RunLocalTest.java"
+# mkfile src/main/java "$1.java"
+# mkfile src/test/java "RunLocalTest.java"
 
 # create build.gradle
 cat << EOF >> build.gradle
 plugins {
     id 'java'
+    id 'application'
 }
 
 jar {
     manifest {
         attributes 'Main-Class': '$1'
     }
+}
+
+sourceSets {
+    main.java.srcDirs = ['src']
+}
+
+application {
+    mainClassName = '$1'
 }
 
 repositories {

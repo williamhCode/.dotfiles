@@ -14,38 +14,41 @@ config.debug_key_events = true
 config.default_workspace = "williamhou"
 
 config.font = wezterm.font_with_fallback {
-  "SF Mono",
+  { family = "SF Mono", weight = "Medium" },
   "Hack Nerd Font",
 }
 config.font_size = 15.0
 config.line_height = 1.35
+-- config.cell_width = 0.90
 
 -- ui
-config.window_background_opacity = 0.96
+config.window_background_opacity = 0.92
+config.macos_window_background_blur = 20
 
 config.window_padding = {
   bottom = 0,
 }
 
-wezterm.on("update-right-status", function(window, pane)
-  window:set_right_status(
-    wezterm.format {
-      { Background = { Color = colors.dark_bg } },
-      { Foreground = { Color = colors.fg } },
-      { Text = window:active_workspace() .. " " },
-    }
-  )
-end)
+-- wezterm.on("update-right-status", function(window, pane)
+--   window:set_right_status(
+--     wezterm.format {
+--       { Background = { Color = colors.dark_bg } },
+--       { Foreground = { Color = colors.fg } },
+--       { Text = window:active_workspace() .. " " },
+--     }
+--   )
+-- end)
 
 config.window_decorations = "RESIZE"
-config.window_frame = {
-  font = wezterm.font { family = "SF Mono", weight = "Bold" },
-  font_size = 14.0,
-  active_titlebar_bg = colors.dark_bg,
-  inactive_titlebar_bg = colors.dark_bg,
-}
+-- config.window_frame = {
+--   font = wezterm.font { family = "SF Mono", weight = "Bold" },
+--   font_size = 14.0,
+--   active_titlebar_bg = colors.dark_bg,
+--   inactive_titlebar_bg = colors.dark_bg,
+-- }
 config.hide_tab_bar_if_only_one_tab = true
 
+-- config.color_scheme = "Github"
 config.bold_brightens_ansi_colors = "No"
 config.colors = {
   tab_bar = {
