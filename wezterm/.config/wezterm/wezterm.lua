@@ -9,7 +9,8 @@ if wezterm.config_builder then
 end
 
 config.front_end = "WebGpu"
-config.debug_key_events = true
+config.freetype_load_flags = 'NO_HINTING'
+-- config.debug_key_events = true
 
 config.default_workspace = "williamhou"
 
