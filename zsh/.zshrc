@@ -68,11 +68,10 @@ export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
 export DBUS_SESSION_BUS_ADDRESS="unix:path=$DBUS_LAUNCHD_SESSION_BUS_SOCKET" 
 
 # directories
-vrc="$HOME/.config/nvim"
-zrc="$HOME/.zshrc"
+# vrc="$HOME/.config/nvim"
+# zrc="$HOME/.zshrc"
 pco="/Users/williamhou/Documents/Coding/Personal-coding"
 co="/Users/williamhou/Documents/Coding/"
-alias cs="cd /Users/williamhou/Documents/Coding/CS180"
 alias vi="env TERM=wezterm nvim"
 alias a="tmux attach"
 
