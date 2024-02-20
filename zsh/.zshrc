@@ -58,6 +58,8 @@ if [[ -z $TMUX ]]; then
     export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
     export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
     export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+    # export PATH="$PATH:/Users/williamhou/mylibraries/zig"
+    export PATH="/Users/williamhou/mylibraries/zig:$PATH"
 fi
 
 export LG_CONFIG_FILE="$HOME/.config/lazygit/config.yml"
@@ -95,7 +97,7 @@ function ssh_alias()
 }
 ssh_alias
 
-# # tmux
+# tmux
 alias f="~/.local/scripts/tmux-sessionizer.sh"
 function tms() {
     if [[ -n $1 ]] then
