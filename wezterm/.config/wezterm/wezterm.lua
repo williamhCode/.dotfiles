@@ -16,11 +16,12 @@ config.default_workspace = "williamhou"
 
 config.font = wezterm.font_with_fallback {
   { family = "SF Mono", weight = "Medium" },
-  "Hack Nerd Font",
+  -- "Hack Nerd Font",
+  "Symbols Nerd Font",
 }
 config.font_size = 15.0
-config.line_height = 1.35
--- config.cell_width = 0.90
+config.line_height = 1.32
+config.cell_width = 0.90
 
 -- ui
 config.window_background_opacity = 0.92
@@ -142,6 +143,7 @@ config.keys = {
   { key = "[", mods = "SUPER", action = act.SendString "\x1bs[" },
   { key = "]", mods = "SUPER", action = act.SendString "\x1bs]" },
   { key = "a", mods = "SUPER", action = act.SendString "\x1bsa" },
+  { key = "k", mods = "SUPER", action = act.SendString "\x1bsk" },
 
   -- tmux
   { key = "r", mods = "SUPER", action = act.SendString "\x01s" },

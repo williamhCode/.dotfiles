@@ -12,6 +12,8 @@ autoload -Uz compinit && compinit
 # settings
 unsetopt autocd
 setopt hist_ignore_all_dups
+# setopt inc_append_history
+setopt share_history
 
 # add color to ls
 export CLICOLOR=1
@@ -36,13 +38,22 @@ if [[ -z $TMUX ]]; then
     [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
     eval "$(pyenv init -)"
 
-    export PATH="/Users/williamhou/Downloads/nvim-macos/bin:$PATH"
+    # export PATH="/Users/williamhou/Downloads/nvim-macos-arm64/bin:$PATH"
+    # export PATH="/Users/williamhou/Documents/Coding/nvim-related/neovim/build/bin:$PATH"
+    export PATH="/Users/williamhou/mylibraries/nvim/bin:$PATH"
 fi
 
-export LG_CONFIG_FILE="$HOME/.config/lazygit/config.yml"
+# For compilers to find llvm you may need to set:
+#   export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
+#   export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
 
-export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
+export LDFLAGS="-L/opt/homebrew/opt/llvm/lib -L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++"
 export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
+
+export CC="/opt/homebrew/opt/llvm/bin/clang"
+export CXX="/opt/homebrew/opt/llvm/bin/clang++"
+
+export LG_CONFIG_FILE="$HOME/.config/lazygit/config.yml"
 
 export DBUS_SESSION_BUS_ADDRESS="unix:path=$DBUS_LAUNCHD_SESSION_BUS_SOCKET" 
 
@@ -101,3 +112,4 @@ add-zsh-hook chpwd load-local-conf
 #   neofetch
 # fi
 
+# source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
