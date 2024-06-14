@@ -9,7 +9,8 @@ if wezterm.config_builder then
 end
 
 config.front_end = "WebGpu"
-config.freetype_load_flags = "NO_HINTING"
+-- config.front_end = "OpenGL"
+config.freetype_load_flags = "DEFAULT"
 -- config.debug_key_events = true
 
 config.default_workspace = "williamhou"
@@ -20,8 +21,8 @@ config.font = wezterm.font_with_fallback {
   "Symbols Nerd Font",
 }
 config.font_size = 15.0
-config.line_height = 1.32
-config.cell_width = 0.90
+config.line_height = 1.2
+config.cell_width = 0.9
 
 -- ui
 config.window_background_opacity = 0.92

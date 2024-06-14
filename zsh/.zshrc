@@ -26,6 +26,7 @@ export PYENV_ROOT="$HOME/.pyenv"
 
 # prevent duplicate execution in tmux
 if [[ -z $TMUX ]]; then
+    # clear PATH first to default
     export PATH="$PATH:/Applications/MATLAB_R2021a.app/bin"
     export PATH="$PATH:/Users/williamhou/.dotnet/tools"
     export PATH="$PATH:/Users/williamhou/.local/scripts"
@@ -33,25 +34,24 @@ if [[ -z $TMUX ]]; then
     export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
     export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
     export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
-    # export PATH="$PATH:/Users/williamhou/mylibraries/zig"
     export PATH="/Users/williamhou/mylibraries/zig:$PATH"
     [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
     eval "$(pyenv init -)"
-
-    # export PATH="/Users/williamhou/Downloads/nvim-macos-arm64/bin:$PATH"
-    # export PATH="/Users/williamhou/Documents/Coding/nvim-related/neovim/build/bin:$PATH"
     export PATH="/Users/williamhou/mylibraries/nvim/bin:$PATH"
+    export DYLD_LIBRARY_PATH="$(brew --prefix)/lib:$DYLD_LIBRARY_PATH"
+
+    # export PATH="/Users/williamhou/Documents/Coding/nvim-related/neovim/build/bin:$PATH"
 fi
 
-# For compilers to find llvm you may need to set:
-#   export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
-#   export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
-
-export LDFLAGS="-L/opt/homebrew/opt/llvm/lib -L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++"
-export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
+echo "PATH when $(basename $SHELL) starts: $PATH" >> ~/path_debug.txt
 
 export CC="/opt/homebrew/opt/llvm/bin/clang"
 export CXX="/opt/homebrew/opt/llvm/bin/clang++"
+
+# fix https://github.com/llvm/llvm-project/issues/77653
+# but breaks exceptions thrown from constructor
+# export LDFLAGS="-L/opt/homebrew/opt/llvm/lib/c++"
+# export LDFLAGS="-L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++"
 
 export LG_CONFIG_FILE="$HOME/.config/lazygit/config.yml"
 
@@ -82,6 +82,13 @@ function ssh_alias()
     alias pu_sftp="sftp $pu_server"
 }
 ssh_alias
+
+function ebti_ssh() {
+    export TERM="xterm-256color"
+    ssh -L 7060:localhost:7060 \
+        -L 8081:localhost:8081 \
+        william@10.10.254.11
+}
 
 # tmux
 alias f="~/.local/scripts/tmux-sessionizer.sh"
