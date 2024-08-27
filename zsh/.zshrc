@@ -35,9 +35,10 @@ if [[ -z $TMUX ]]; then
     export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
     export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
     export PATH="/Users/williamhou/mylibraries/zig:$PATH"
+    # export PATH="/Users/williamhou/Documents/Coding/Github/depot_tools:$PATH"
     [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
     eval "$(pyenv init -)"
-    export PATH="/Users/williamhou/mylibraries/nvim/bin:$PATH"
+    # export PATH="/Users/williamhou/mylibraries/nvim/bin:$PATH"
     export DYLD_LIBRARY_PATH="$(brew --prefix)/lib:$DYLD_LIBRARY_PATH"
 
     # export PATH="/Users/williamhou/Documents/Coding/nvim-related/neovim/build/bin:$PATH"
@@ -45,13 +46,12 @@ fi
 
 echo "PATH when $(basename $SHELL) starts: $PATH" >> ~/path_debug.txt
 
-export CC="/opt/homebrew/opt/llvm/bin/clang"
-export CXX="/opt/homebrew/opt/llvm/bin/clang++"
+# export CC="/opt/homebrew/opt/llvm/bin/clang"
+# export CXX="/opt/homebrew/opt/llvm/bin/clang++"
 
 # fix https://github.com/llvm/llvm-project/issues/77653
-# but breaks exceptions thrown from constructor
-# export LDFLAGS="-L/opt/homebrew/opt/llvm/lib/c++"
-# export LDFLAGS="-L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++"
+# export LDFLAGS="-L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++ -L/opt/homebrew/opt/llvm/lib"
+# export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
 
 export LG_CONFIG_FILE="$HOME/.config/lazygit/config.yml"
 
@@ -60,7 +60,7 @@ export DBUS_SESSION_BUS_ADDRESS="unix:path=$DBUS_LAUNCHD_SESSION_BUS_SOCKET"
 # directories
 pco="/Users/williamhou/Documents/Coding/Personal-coding"
 co="/Users/williamhou/Documents/Coding/"
-# alias vi="env TERM=wezterm nvim"
+# alias vi="env TERM=xterm-kitty nvim"
 alias vi=nvim
 alias a="tmux attach"
 

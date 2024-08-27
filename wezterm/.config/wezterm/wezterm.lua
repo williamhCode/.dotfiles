@@ -16,7 +16,8 @@ config.freetype_load_flags = "DEFAULT"
 config.default_workspace = "williamhou"
 
 config.font = wezterm.font_with_fallback {
-  { family = "SF Mono", weight = "Medium" },
+  { family = "JetBrains Mono", weight = "Regular" },
+  -- { family = "SF Mono", weight = "Medium" },
   -- "Hack Nerd Font",
   "Symbols Nerd Font",
 }
