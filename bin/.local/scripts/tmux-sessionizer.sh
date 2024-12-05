@@ -10,7 +10,7 @@ else
     echo ~/.config/nvim; 
     echo ~/Documents/Notes;
     echo ~/Documents/Work/Resume stuff;
-    find ~/Documents/Coding -mindepth 2 -maxdepth 2 -type d; 
+    find ~/Documents/Coding -mindepth 2 -maxdepth 2 -type d | sort -r;
   } | fzf)
 fi
 

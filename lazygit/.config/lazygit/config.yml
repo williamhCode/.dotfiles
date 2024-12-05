@@ -1,14 +1,12 @@
 gui:
   scrollHeight: 4 # how many lines you scroll by
   theme:
-    # selectedLineBgColor:
-    #   - gray
-    # selectedRangeBgColor:
-    #   - gray
     selectedLineBgColor:
-      - '#414858'
+      # - '#414858'
+      - '#f2e9e1'
     selectedRangeBgColor:
-      - '#414858'
+      # - '#414858'
+      - '#dfdad9'
 keybinding:
   universal:
     prevPage: '<c-b>' # go to next page in list

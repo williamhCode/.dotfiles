@@ -36,3 +36,57 @@ symbol = " "
 [memory_usage]
 symbol = " "
 
+
+
+
+# # format = "$username $directory $git_branch$fill $time\n  [󱞪](fg:iris) "
+# format = "$username $directory $git_branch$fill $cmd_duration\n  [󱞪](fg:iris) "
+# palette = "rose-pine-dawn"
+
+# [palettes.rose-pine-dawn]
+# overlay = '#f2e9e1'
+# love = '#b4637a'
+# gold = '#ea9d34'
+# rose = '#d7827e'
+# pine = '#286983'
+# foam = '#56949f'
+# iris = '#907aa9'
+
+# [directory]
+# format = "[](fg:overlay)[ $path ]($style)[](fg:overlay)"
+# style = "bg:overlay fg:pine"
+# truncation_length = 3
+# truncation_symbol = "…/"
+
+# [directory.substitutions]
+# Documents = "󰈙"
+# Downloads = " "
+# Music = " "
+# Pictures = " "
+
+# [fill]
+# style = "fg:overlay"
+# symbol = " "
+
+# [git_branch]
+# format = "[](fg:overlay)[ $symbol $branch ]($style)[](fg:overlay)"
+# style = "bg:overlay fg:pine"
+# symbol = ""
+
+# # [time]
+# # disabled = false
+# # format = "[](fg:overlay)[ $time 󰴈 ]($style)[](fg:overlay)"
+# # time_format = "%I:%M%P"
+# # use_12hr = true
+
+# [cmd_duration]
+# disabled = false
+# format = "[](fg:overlay)[ $duration 󰴈 ]($style)[](fg:overlay)"
+# style = "bg:overlay fg:rose"
+
+# [username]
+# disabled = false
+# format = "[](fg:overlay)[ 󰧱 $user ]($style)[](fg:overlay)"
+# show_always = true
+# style_root = "bg:overlay fg:iris"
+# style_user = "bg:overlay fg:iris"

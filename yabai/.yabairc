@@ -36,7 +36,7 @@ yabai -m config external_bar                 all:$SPACEBAR_HEIGHT:0
 # yabai -m signal --add event="window_created" action="/Users/williamhou/.dotfiles/bin/.local/scripts/yabai/set_floating.sh 3"
 # yabai -m signal --add event="window_created" action="/Users/williamhou/.dotfiles/bin/.local/scripts/yabai/set_floating.sh 4"
 
-yabai -m rule --add app!='^Neogui$|^WezTerm$|^kitty$|^sioyek$|^Calendar$|^Reminders$' manage=off
+yabai -m rule --add app!='^Neogurt$|^WezTerm$|^kitty$|^sioyek$|^Calendar$|^Reminders$' manage=off
 # yabai -m rule --add app='^System' manage=off
 # yabai -m rule --add title='Preferences$' manage=off
 # yabai -m rule --add title='General$' manage=off
