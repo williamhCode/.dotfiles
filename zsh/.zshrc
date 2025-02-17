@@ -28,8 +28,8 @@ export PYENV_ROOT="$HOME/.pyenv"
 if [[ -z $PATH_SET ]]; then
     export PATH_SET=1
     export PATH="$PATH:/Applications/MATLAB_R2021a.app/bin"
-    export PATH="$PATH:/Users/williamhou/.dotnet/tools"
-    export PATH="$PATH:/Users/williamhou/.local/scripts"
+    export PATH="$PATH:$HOME/.dotnet/tools"
+    export PATH="$PATH:$HOME/.local/scripts"
     export PATH="$HOME/.cargo/bin:$PATH"
     export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
     export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"

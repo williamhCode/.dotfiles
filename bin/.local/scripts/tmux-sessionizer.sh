@@ -8,9 +8,13 @@ else
     echo ~/;
     echo ~/.dotfiles;
     echo ~/.config/nvim; 
-    echo ~/Documents/Notes;
-    echo ~/Documents/Work/Resume stuff;
-    find ~/Documents/Coding -mindepth 2 -maxdepth 2 -type d | sort -r;
+    find ~/cs354 -maxdepth 1 -type d; 
+    find ~/cs354-old -maxdepth 1 -type d; 
+    find ~/cs252 -maxdepth 1 -type d; 
+    find ~/cs250 -maxdepth 1 -type d; 
+    find ~/cs240 -maxdepth 1 -type d; 
+    find ~/cs373 -maxdepth 1 -type d; 
+    find ~/cs408 -maxdepth 1 -type d; 
   } | fzf)
 fi
 
