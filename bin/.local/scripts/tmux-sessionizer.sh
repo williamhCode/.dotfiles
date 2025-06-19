@@ -1,21 +1,26 @@
-#!/bin/bash
+if [[ "$HOST" == "Williams-MacBook-Pro-4.local" ]]; then
+  dirs=$(
+  {
+    echo ~/;
+    echo ~/.dotfiles;
+    echo ~/.config/nvim;
+    echo ~/Documents/Notes;
+    echo ~/Documents/Work/Resume\ stuff;
+    find ~/Documents/Coding -mindepth 2 -maxdepth 2 -type d | sort -r;
+  })
+else
+  dirs=$(
+  {
+    echo ~/;
+    echo ~/.dotfiles;
+    echo ~/.config/nvim;
+  })
+fi
 
 if [[ $# -eq 1 ]]; then
   selected=$1
 else
-  selected=$(
-  { 
-    echo ~/;
-    echo ~/.dotfiles;
-    echo ~/.config/nvim; 
-    echo ~/Documents/Notes;
-    echo ~/Documents/Work/Resume stuff;
-    find ~/Documents/Coding -mindepth 2 -maxdepth 2 -type d | sort -r;
-  } | fzf)
-fi
-
-if [[ -z $selected ]]; then
-  exit 0
+  selected=$(echo "$dirs" | fzf)
 fi
 
 # selected_name=$(basename "$selected" | tr . _)

@@ -17,9 +17,8 @@ keybinding:
     nextBlock-alt: '<c-j>' # goto the next block / panel
     scrollLeft: 'h' # scroll left within list view
     scrollRight: 'l' # scroll right within list view
-    scrollUpMain-alt1: null # main panel scroll up
-    scrollDownMain-alt1: null # main panel scroll down
+    scrollUpMain-alt1: <disabled> # main panel scroll up
+    scrollDownMain-alt1: <disabled> # main panel scroll down
   commits:
     moveDownCommit: 'J' # move commit down one
     moveUpCommit: 'K' # move commit up one
-
