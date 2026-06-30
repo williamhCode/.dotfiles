@@ -31,16 +31,18 @@ if [[ -z $PATH_SET ]]; then
     export PATH="$PATH:/Users/williamhou/.dotnet/tools"
     export PATH="$PATH:/Users/williamhou/.local/scripts"
     export PATH="$HOME/.cargo/bin:$PATH"
+    export PATH="$HOME/.local/bin:$PATH"
     export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
     export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
     export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+    export PATH="/opt/homebrew/opt/trash/bin:$PATH"
     # export PATH="/Users/williamhou/Documents/Coding/Github/depot_tools:$PATH"
     [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
     eval "$(pyenv init -)"
     export DYLD_LIBRARY_PATH="$(brew --prefix)/lib:$DYLD_LIBRARY_PATH"
     # export PATH="/Users/williamhou/Documents/Coding/nvim-related/neovim/build/bin:$PATH"
 
-    export PATH="/Users/williamhou/mylibraries/nvim-macos-arm64/bin:$PATH"
+    # export PATH="/Users/williamhou/mylibraries/nvim-macos-arm64/bin:$PATH"
     export PATH="/Users/williamhou/mylibraries/zig:$PATH"
 fi
 
@@ -56,24 +58,23 @@ fi
 
 export LG_CONFIG_FILE="$HOME/.config/lazygit/config.yml"
 
-export DBUS_SESSION_BUS_ADDRESS="unix:path=$DBUS_LAUNCHD_SESSION_BUS_SOCKET" 
+export DBUS_SESSION_BUS_ADDRESS="unix:path=$DBUS_LAUNCHD_SESSION_BUS_SOCKET"
 
 # directories
-pco="/Users/williamhou/Documents/Coding/Personal-coding"
-co="/Users/williamhou/Documents/Coding/"
+export pco="$HOME/Coding/Personal-coding"
+export co="$HOME/Documents/Coding"
+export pu="$HOME/Documents/Purdue University"
+export puc="$HOME/Documents/Purdue University/3-2"
 # alias vi="env TERM=xterm-kitty nvim"
 alias vi=nvim
 alias a="tmux attach"
-
-# alias python="python3"
-# alias pip="pip3"
-
-alias neogui="/Users/williamhou/Documents/Coding/Personal-coding/neogui/build/release/neogui"
 
 # vim
 export VISUAL="nvim"
 export EDITOR="$VISUAL"
 set -o emacs
+
+alias avante='nvim -c "lua vim.defer_fn(function()require(\"avante.api\").zen_mode()end, 100)"'
 
 # ssh
 function ssh_data()
@@ -94,16 +95,19 @@ function sftp_data()
     sftp hou169@data.cs.purdue.edu
 }
 
-# function ebti_ssh() {
-#     export TERM="xterm-256color"
-#     ssh -L 7060:localhost:7060 \
-#         -L 8081:localhost:8081 \
-#         william@10.10.254.11
-# }
-
 function ssh_xinu() {
     export TERM="xterm-256color"
-    ssh hou169@xinu16.cs.purdue.edu
+    ssh hou169@xinu18.cs.purdue.edu
+}
+
+function ssh_426() {
+    export TERM="xterm-256color"
+    ssh -p 2222 cs426@127.0.0.1
+}
+
+function ssh_armor() {
+    export TERM="xterm-256color"
+    ssh -i /Users/williamhou/Documents/Coding/CS426/backups/nqq878/.ssh/id_rsa nqq878@armor3.cs.purdue.edu
 }
 
 # tmux
@@ -154,3 +158,6 @@ export FZF_DEFAULT_OPTS="
 	--color=border:#dfdad9,header:#286983,gutter:#faf4ed
 	--color=spinner:#ea9d34,info:#56949f
 	--color=pointer:#907aa9,marker:#b4637a,prompt:#797593"
+
+# Added by Antigravity
+export PATH="/Users/williamhou/.antigravity/antigravity/bin:$PATH"
