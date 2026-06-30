@@ -21,6 +21,7 @@ fi
 # selected_name=$(basename "$selected" | tr . _)
 # get last two directories in path
 selected_name=$(basename "$(dirname "$selected")")/$(basename "$selected")
+selected_name=${selected_name//./_}
 
 # if tmux is not attached, create session or attach to session
 if [[ -z $TMUX ]]; then
@@ -30,9 +31,6 @@ if [[ -z $TMUX ]]; then
 elif ! tmux has-session -t=$selected_name 2> /dev/null; then
   tmux new-session -ds "$selected_name" -c "$selected"
 fi
-
-# replace . with _ in selected_name
-selected_name=${selected_name//./_}
 
 # if tmux is attached, switch to session
 tmux switch-client -t "$selected_name"
